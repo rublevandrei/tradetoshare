@@ -1,0 +1,38 @@
+{% extends "::layout.html.twig" %}
+
+{% block content %}
+    <h3>{{ 'header.success' | trans({'%name%': userInformation.realName}, 'HWIOAuthBundle') }}</h3>
+
+    <div class="row register_page">
+        <div class="col-sm-12">
+            <h1 class="register_title text-center">You can still connect with more social media</h1>
+        </div>
+        {% if error is defined and error %}
+            <span>{{ error }}</span>
+        {% endif %}
+
+        <div class="col-sm-12 login_form">
+            <div class="text-center">
+                <ul class="social-media">
+                    {% for provider in app.user.noneSetProviders %}
+                        <li>
+                            <a href="{{ hwi_oauth_login_url(provider) }}">
+                                <i class="fa fa-{{ (provider == 'vkontakte') ? 'vk' : (provider == 'imgur' ? 'info' : provider) }} fa-2x"
+                                   title="{{ provider }}" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="text-right">
+                <a href="/" class="btn btn-danger">Ask me later</a>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+{% block stylesheet %}
+    {{ parent() }}
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+ {% block aside %} {% endblock %}

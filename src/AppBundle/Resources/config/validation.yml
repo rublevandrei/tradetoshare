@@ -1,0 +1,93 @@
+FOS\UserBundle\Model\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: 
+             fields: email
+             errorPath: email 
+             message: fos_user.email.already_used
+             groups: [ "AppRegistration", "AppProfile" ]
+    properties:
+        email:
+            - NotBlank:
+                message: fos_user.email.blank
+                groups: [ "AppRegistration", "AppProfile" ]
+            - Length:
+                min: 2
+                minMessage: fos_user.email.short
+                max: 255
+                maxMessage: fos_user.email.long
+                groups: [ "AppRegistration", "ResetPassword" ]
+            - Email:
+                message: fos_user.email.invalid
+                groups: [ "AppRegistration", "AppProfile" ]
+        plainPassword:
+            - NotBlank:
+                message: fos_user.password.blank
+                groups: [ "AppRegistration", "ResetPassword", "ChangePassword" ]
+            - Length:
+                min: 2
+                max: 4096
+                minMessage: fos_user.password.short
+                groups: [ "AppRegistration", "AppProfile", "ResetPassword", "ChangePassword"]
+
+FOS\UserBundle\Model\Group:
+    properties:
+        name:
+            - NotBlank:
+                message: fos_user.group.blank
+                groups: [ "AppRegistration" ]
+            - Length:
+                min: 2
+                minMessage: fos_user.group.short
+                max: 255
+                maxMessage: fos_user.group.long
+                groups: [ "AppRegistration" ]
+
+FOS\UserBundle\Propel\User:
+    properties:
+        email:
+            - NotBlank:
+                message: fos_user.email.blank
+                groups: [ "AppRegistration", "AppProfile" ]
+            - Length:
+                min: 2
+                minMessage: fos_user.email.short
+                max: 255
+                maxMessage: fos_user.email.long
+                groups: [ "AppRegistration", "ResetPassword" ]
+            - Email:
+                message: fos_user.email.invalid
+                groups: [ "AppRegistration", "AppProfile" ]
+
+        plainPassword:
+            - NotBlank:
+                message: fos_user.password.blank
+                groups: [ "AppRegistration", "ResetPassword", "ChangePassword" ]
+            - Length:
+                min: 2
+                max: 4096
+                minMessage: fos_user.password.short
+                groups: [ "AppRegistration", "AppProfile", "ResetPassword", "ChangePassword"]
+
+
+FOS\UserBundle\Propel\Group:
+    properties:
+        name:
+            - NotBlank:
+                message: fos_user.group.blank
+                groups: [ "AppRegistration" ]
+            - Length:
+                min: 2
+                minMessage: fos_user.group.short
+                max: 255
+                maxMessage: fos_user.group.long
+                groups: [ "AppRegistration" ]
+
+
+AppBundle\Entity\Photo:
+    properties:
+        title:
+            - Length:
+                min: 1
+                minMessage: 'Title must be at least {{ limit }} characters long'
+                max: 255
+                minMessage: 'Title cannot be longer than {{ limit }} characters'

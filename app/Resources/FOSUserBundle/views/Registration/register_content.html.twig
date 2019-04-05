@@ -1,0 +1,42 @@
+{% block fos_user_content %}
+    <div class="col-sm-12">
+        <h1 class="register_title text-center">Join</h1>
+    </div>
+    <div class="col-sm-12 registration_form">
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+    
+        {{ form_start(form) }}
+            {{ form_errors(form)|replace({'username': 'email'})|raw }}
+         <label>
+            <span>Full Name</span>         
+           {{ form_widget(form.name) }}
+        </label>
+         <label>
+            <span>Email</span>       
+          {{ form_widget(form.email) }}
+        </label>
+         <label>
+            <span>Password</span>        
+          {{ form_widget(form.plainPassword.first) }}
+        </label>
+        <label>
+            <span>Confirm your password</span>       
+          {{ form_widget(form.plainPassword.second) }}
+        </label> 
+  
+        <div class="text-center">
+            <input type="submit" value="Sign Up">
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+
+{% endblock %}

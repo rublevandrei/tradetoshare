@@ -1,0 +1,19 @@
+{{ form_start(form) }}
+            {% form_theme form 'form/user_fields.html.twig' %}
+<div class="image">
+    {% if(app.user.avatar != null) %}
+        <img src="{{ asset('bundles/framework/images/user/' ~ app.user.avatar) }}" alt="profile">
+    {% else %}
+        <img src="{{ asset('bundles/framework/images/no_avatar.png') }}" alt="profile">
+    {% endif %}
+
+</div>
+<div class="content">
+    {{ form_widget(form) }}
+
+    <div class="line submit">
+        <input type="submit" value="Submut">
+        <a href="#">Delete My Profile</a>
+    </div>
+</div>
+{{ form_end(form) }}

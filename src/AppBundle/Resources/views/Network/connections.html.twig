@@ -1,0 +1,17 @@
+{% extends "::layout.html.twig" %}
+{% block title %}Networks{% endblock %}
+
+{% block content %}
+    <div class="col-sm-8 members_page">
+        <h2 class="section_title">My Network</h2>
+        <div class="row network_grid">
+            {% for connection in connections %}
+                {% if connection.user == app.user %}
+                    {% include 'AppBundle:Network:_item.html.twig' with {'user' : connection.fromUser, 'status' : 'accepted', 'id': connection.id} %}
+                {% else %}
+                    {% include 'AppBundle:Network:_item.html.twig' with {'user' : connection.user, 'status' : 'accepted', 'id': connection.id} %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

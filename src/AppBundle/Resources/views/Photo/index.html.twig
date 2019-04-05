@@ -1,0 +1,55 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Photo{% endblock %}
+
+{% block content %}
+    <div class="colum_block items_list">
+        <section class="heading">
+            <h2>Photo</h2>
+            <a href="{{ path('photo_new') }}" class="add_item button">
+                <i class="fa fa-plus" aria-hidden="true"></i><span>Add Photo</span>
+            </a>
+        </section>
+        <section class="items">
+            <div class="row grid">
+                {% for photo in photos %}
+                    <div class="item col-sm-6 col-md-4 matchHeight">
+                        <div class="image img-wrapper">
+                            {% if(photo.image != null) %}
+                                <a href="{{ path('photo_show', {id: photo.id}) }}" class="name" title="View photo">
+                                    <img src="{{ asset('bundles/framework/images/photo/' ~ photo.image) }}"
+                                     alt="{{ photo.title }}"/>
+                                </a>
+                            {% else %}
+                                <img src="{{ asset('bundles/framework/images/no-logo.png') }}"
+                                         alt="{{ photo.title }}"/>
+                            {% endif %}
+                        </div>
+                        <div class="title">
+                            <div class="right-container">
+                                <a href="{{ path('photo_show', {id: photo.id}) }}" class="name" title="View photo">
+                                    <span class="name">{{ photo.title }}</span>
+                                </a>
+                                <a href="{{ path('photo_edit', {id: photo.id}) }}" class="edit" title="Edit photo">
+                                    <span><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                                </a>
+                            </div>
+                            <a href="{{ path('photo_delete', {id: photo.id}) }}" class="delete-container" title="Delete photo" onclick="var result = confirm('Are you sure you want to delete picture? You cannot undo this action'); if(!result) return false;">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                {% else %}
+                    No photos found
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.matchHeight').matchHeight();
+        });
+    </script>
+{% endblock %}
+

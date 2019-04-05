@@ -1,0 +1,80 @@
+{% extends "::layout.html.twig" %}
+{% block title %}Article{% endblock %}
+
+{% block content %}
+
+    <div class="col-md-8">
+        <section class="leave_comment clearfix">
+            <h2 class="section_title">{% if article.id != null %}
+                    Edit Article
+                {% else %}
+                    Add Article
+                {% endif %}</h2>
+
+            {{ form_start(form, {'attr': {'class': 'article_form', novalidate: 'novalidate'}}) }}
+            {{ form_errors(form) }}
+            {% form_theme form 'form/company_fields.html.twig' %}
+                {{ form_row(form.title) }}
+                {{ form_row(form.description) }}
+            {{ form_row(form.image) }}
+                <ul class="edit_profile">
+                    <li>
+                        <button class="btn btn-primary drop_down_button" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                            Comments
+                            <span class="caret"></span>
+                        </button>
+                        <div class="collapse" id="collapseExample1">
+                            <div class="well">
+                                {{ form_row(form.allowComments) }}
+                            </div>
+                        </div>
+                    </li>
+                    {#<li>#}
+                        {#<button class="btn btn-primary drop_down_button" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">#}
+                            {#Comments#}
+                            {#<span class="caret"></span>#}
+                        {#</button>#}
+                        {#<div class="collapse" id="collapseExample2">#}
+                            {#<div class="well">#}
+                                {#...2#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</li>#}
+                </ul>
+
+                {% if article.id != null %}
+                    <input type="reset" value="Delete">
+                    <input type="submit" value="Update">
+                {% else %}
+                    <input type="submit" name="" value="submit">
+                {% endif %}
+                {{ form_end(form) }}
+
+                {% if article.id != null %}
+                    {{ form_start(delete_form, {'attr': {'class': 'delete_article_form'}}) }}
+                    {{ form_end(delete_form) }}
+                {% endif %}
+
+        </section>
+    </div>
+
+    <script src="http://cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: 200,
+            menubar: false,
+            resize: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+            ],
+            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            content_css: '//www.tinymce.com/css/codepen.min.css'
+        });
+    </script>
+{% endblock %}
+ {% block scripts %}
+
+ {% endblock %}

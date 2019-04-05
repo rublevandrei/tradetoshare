@@ -1,0 +1,62 @@
+<!-- Notifications -->
+<div class="user_ico user_notifications">
+    {% if count != 0 %}
+        <i class="fa fa-bell" aria-hidden="true"></i><div class="circle_num"><strong>{{ count }}</strong></div>
+    {% else %}
+        <i class="fa fa-bell" aria-hidden="true"></i>
+    {% endif %}
+
+    {% if count != 0 %}
+            <div class="header_pop_up">
+                <div class="header_pop_up_wrapper">
+                    <div class="header_pop_up_wrapper_top">
+                        <div class="header_pop_up_filter">
+                            <p>Filter on:</p>
+                            <span class="theme-post th_all">View All</span>
+                            <span class="theme-post th_users"><i class="fa fa-users" aria-hidden="true"></i><span>Friend</span></span>
+                            <span class="theme-post th_post"><i class="fa fa-file" aria-hidden="true"></i><span>Post</span></span>
+                            <span class="theme-post th_comment"><i class="fa fa-comment" aria-hidden="true"></i><span>Comment</span></span>
+                            <span class="theme-post th_like"><i class="fa fa-thumbs-up" aria-hidden="true"></i><span>Vote</span></span>
+                            <span class="theme-post th_varning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i><span>Varning</span></span>
+                        </div>
+                        <p><strong>Notifications</strong></p>
+                    </div>
+                <div class="header_pop_up_wrapper_body">
+                    <ul>
+                        {% if pending is not empty %}
+                            <li><h5>New friends request</h5>
+                                <ul>
+                                    {% for notification in pending %}
+                                        <li>{% include 'AppBundle:Notification:network.html.twig' %}</li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endif %}
+                        {% if accepted is not empty %}
+                            <li><h5>You are now friends</h5>
+                                <ul>
+                                    {% for notification in accepted %}
+                                        <li>{% include 'AppBundle:Notification:network.html.twig' %}</li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endif %}
+                        {% if notes is not empty %}
+                            <li><h5>Notice</h5>
+                                <ul>
+                                    {% for note in notes %}
+                                        <li>{% include 'AppBundle:Notification:' ~ note.type ~'.html.twig' %}</li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endif %}
+                    </ul>
+                <div class="header_pop_up_wrapper_bottom">
+                    <a href="#">See All</a>
+                </div>
+                </div>
+            </div>
+            </div>
+        {% endif %}
+</div>
+<!-- End Notifications -->

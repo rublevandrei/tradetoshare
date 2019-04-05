@@ -1,0 +1,33 @@
+{% extends "::layout.html.twig" %}
+{% block title %}Networks{% endblock %}
+
+{% block content %}
+    <div class="col-sm-8 members_page">
+
+        <div class="text-center">
+            <a href="{{ path('tradeland_new') }}" class="invite_friends">
+                <span>Create Tradelends</span>
+            </a>
+        </div>
+
+        <h2 class="section_title">Tradelends</h2>
+
+        <div class="row network_grid">
+            <div class="col-md-12">
+                <h4 class="section_subtitle">My tradelands</h4>
+            </div>
+            {% for tradeland in tradelands %}
+                {% include 'AppBundle:Tradeland:_item.html.twig' with { 'button': 'leave'}%}
+            {% endfor %}
+
+            <div class="col-md-12">
+                <h4 class="section_subtitle">Other tradelands</h4>
+            </div>
+            {% for tradeland in other_tradelands %}
+                {% include 'AppBundle:Tradeland:_item.html.twig' with { 'button': 'join'} %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+

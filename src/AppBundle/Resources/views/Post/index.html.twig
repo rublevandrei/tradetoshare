@@ -1,0 +1,78 @@
+{% extends "::layout.html.twig" %}
+{% block title %}{{ app.user.name }}{% endblock %}
+
+{% block content %}
+    <div class="colum_block trending_media">
+        <div class="title_block">
+            <a href="#">View All</a>
+            <strong>Tranding photos and Videos  <span>(456)</span></strong>
+        </div>
+        <div class="items tranding_photo_slider">
+            <div class="item view_photo">
+                <div class="img"><img src="{{asset('bundles/framework/upload/trending1.jpg')}}" alt=""/></div>
+                <div class="item_action">
+                    <p><i class="fa fa-eye" aria-hidden="true"></i> Viev</p>
+                </div>
+            </div>
+            <div class="item view_photo">
+                <div class="img"><img src="{{asset('bundles/framework/upload/trending2.jpg')}}" alt=""/></div>
+                <div class="item_action">
+                    <p><i class="fa fa-eye" aria-hidden="true"></i> Viev</p>
+                </div>
+            </div>
+            <div class="item view_photo">
+                <div class="img"><img src="{{asset('bundles/framework/upload/trending4.jpg')}}" alt=""/></div>
+                <div class="item_action">
+                    <p><i class="fa fa-eye" aria-hidden="true"></i> Viev</p>
+                </div>
+            </div>
+            <div class="item view_video">
+                <div class="img"><img src="{{asset('bundles/framework/upload/trending1.jpg')}}" alt=""/></div>
+                <div class="item_action">
+                    <p><i class="fa fa-caret-square-o-right" aria-hidden="true"></i> Play</p>
+                </div>
+            </div>
+            <div class="item view_video">
+                <div class="img"><img src="{{asset('bundles/framework/upload/trending4.jpg')}}" alt=""/></div>
+                <div class="item_action">
+                    <p><i class="fa fa-caret-square-o-right" aria-hidden="true"></i> Play</p>
+                </div>
+            </div>
+        </div><!-- items -->
+    </div>    <!-- trending_media -->
+<div class="colum_block add_post">
+    <div class="title_block">
+        <strong>Add new post</strong>
+    </div>
+    {% if user == app.user %}
+        {{ render(controller('AppBundle:Post:new')) }}
+    {% endif %}
+</div>
+<div class="colum_block post_filter_block">
+    <p><strong>Post From</strong></p>
+    <div class="ms_item_postes_wrap">
+        <div class="ms_item_postes">
+            <span>Today</span><i class="fa fa-angle-down" aria-hidden="true"></i>
+            <div class="more_actions">
+                <ul>
+                    <li><a href="{{ path('post_index', {'user': user.id}) }}">From Begining</a></li>
+                    <li><a href="{{ path('post_index', {'date': 'year', 'user': user.id}) }}">1 year</a></li>
+                    <li><a href="{{ path('post_index', {'date': '6-month', 'user': user.id}) }}">6 months</a></li>
+                    <li><a href="{{ path('post_index', {'date': '3-month', 'user': user.id}) }}">3 months</a></li>
+                    <li><a href="{{ path('post_index', {'date': 'month', 'user': user.id}) }}">30 days</a></li>
+                    <li><a href="{{ path('post_index', {'date': 'week', 'user': user.id}) }}">7 days</a></li>
+                    <li><a href="{{ path('post_index', {'date': 'yesterday', 'user': user.id}) }}">Yesterday</a></li>
+                    <li><a href="{{ path('post_index', {'date': 'today', 'user': user.id}) }}">Today</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><!-- post_filter_block -->
+
+
+
+    {% for post in posts %}
+        {% include 'AppBundle:Post:_item.html.twig' %}
+    {% endfor %}
+
+{% endblock %}

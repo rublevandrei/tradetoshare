@@ -1,0 +1,21 @@
+{% extends "::layout.html.twig" %}
+{% block title %}Networks{% endblock %}
+
+{% block content %}
+    <div class="col-sm-8 members_page">
+
+        <h2 class="section_title">{{ tradeland.name}}</h2>
+
+        <div class="row network_grid">
+            {% for user in users %}
+                {% if  user in connections and statuses.accepted is defined and  statuses.accepted[user.id] is defined %}
+                    {% include 'AppBundle:Network:_item.html.twig' with {'user' : user, 'status' : 'accepted', 'id': statuses.accepted[user.id]} %}
+                {% elseif  user in connections and statuses.pending is defined and  statuses.pending[user.id] is defined %}
+                    {% include 'AppBundle:Network:_item.html.twig' with {'user' : user, 'status' : 'pending', 'id': statuses.pending[user.id]} %}
+                {% else %}
+                    {% include 'AppBundle:Network:_item.html.twig' with {'user' : user, 'status' : 'connect', 'id': user.id} %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

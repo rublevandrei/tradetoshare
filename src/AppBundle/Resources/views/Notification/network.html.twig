@@ -1,0 +1,34 @@
+{% if(notification.data['user_avatar'] != null) %}
+    <span class="img"><a href="#">
+          <img src="{{ asset('bundles/framework/images/user/' ~ notification.data['user_avatar']) }}">
+        </a></span>
+{% else %}
+    <span class="img"><a href="#">
+          <img src="{{ asset('bundles/framework/images/no_avatar.png') }}">
+        </a></span>
+{% endif %}
+
+<div class="text_wrapper">
+    {% if(notification.type == 'pending') %}
+    <p class="text">
+        <a href="{{ path('user_show', {'user': notification.data['user_id']}) }}"><strong>{{ notification.data['user_name'] }}</strong></a>
+        wants to connect you on TTS
+    </p>
+    {% elseif(notification.type == 'accepted') %}
+    <p class="text">
+        You and <a href="{{ path('user_show', {'user': notification.data['user_id']}) }}"><strong>{{ notification.data['user_name'] }}</strong></a> are now connected
+    </p>
+    {% elseif(notification.type == 'confirmed') %}
+    <p class="text">
+        <a href="{{ path('user_show', {'user': notification.data['user_id']}) }}"><strong>{{ notification.data['user_name'] }}</strong></a> accept your request to connect
+    </p>
+    {% endif %}
+
+    <a href="{{ path('user_show', {'user': notification.data['user_id']}) }}" class="small_batton">View</a>
+    {% if(notification.type == 'pending') %}
+        <a href="{{ path('network_status', {'connection': notification.data['connection_id'], 'status': 'accepted'}) }}" class="small_batton">Accept</a>
+        <a href="{{ path('network_status', {'connection': notification.data['connection_id'], 'status': 'ignored'}) }}" class="small_batton">Ignore</a>
+    {% else %}
+        <a href="#" class="small_batton">Message</a>
+    {% endif %}
+</div>

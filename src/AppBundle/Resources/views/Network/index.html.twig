@@ -1,0 +1,109 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Networks{% endblock %}
+
+{% block content %}
+
+    <div class="colum_block import_friends">
+        <div class="title_block">                            
+            <strong>Import your friends from medial networks:</strong>                                                         
+        </div>
+        <div class="user_profile_socials">
+            <ul class="networks-list" style="height: auto;">
+                {% for provider in ['facebook', 'twitter', 'vkontakte', 'tumblr', 'instagram',
+                'flickr', 'foursquare', 'imgur', 'pinterest', 'odnoklassniki' ] %}
+                    <li class="{{ provider }}" data-provider="{{ provider }}" title="{{ provider }}">
+                        <a href="{{ path('contacts_show', {provider: provider}) }}">
+                            <span></span>
+                        </a>
+                    </li>
+                {% endfor %}                
+             </ul>                                 
+         </div>
+    </div>
+
+    <div class="colum_block import_friends">
+        <div class="title_block">                            
+            <strong>Invite By Email:</strong>                                                         
+        </div>
+        <div class="user_profile_socials">
+            <ul class="networks-list" style="height: auto;">
+                {% for provider in ['google', 'yahoo', 'hotmail' ] %}
+                    <li class="{{ provider }}" data-provider="{{ provider }}" title="{{ provider }}">
+                        <a href="{{ path('contacts_show', {provider: provider}) }}">
+                            <span></span>
+                        </a>
+                    </li>
+                {% endfor %}                
+             </ul>                                 
+         </div>
+        <div class="search_friends_form">
+            <form action="{{ path('invite_email') }}" method="POST">
+                <div class="item">                                    
+                    <div class="selector_wrapper">
+                        <div class="selector_field">
+                        <div class="coll_60">
+                        <input type="text" value="" placeholder="Enter a friend's email" required="required" name="email[]" type="email"><i class="fa fa-search" aria-hidden="true"></i>
+                        </div>
+                        <div class="coll_40">
+                        <input type="submit" value="send" class="batton">
+                        </div> 
+                        </div>                                        
+                    </div>
+                </div>    
+            </form>
+        </div>
+    </div>
+
+
+    <div class="colum_block invite_friends">
+        <div class="title_block">                          
+            <strong>Invite Friends To Connect</strong>
+        </div> 
+        <div class="search_friends_form">
+            <form action="">
+                <div class="item">                                    
+                    <div class="selector_wrapper">
+                        <div class="selector_field"><input type="text" value="" placeholder="Enter a friend's name or email"><i class="fa fa-search" aria-hidden="true"></i></div>                                        
+                    </div>
+                </div>    
+            </form>
+        </div>                       
+    </div>
+
+    <div class="colum_block friends_list">
+        <div class="title_block">                            
+            <strong>People you may know:</strong>                                                         
+        </div>
+        <div class="friends_list_wrapper">
+            <div class="items profile-main-box network_item">
+                {% for user in users %}
+                {% if  user in connections and statuses.accepted is defined and  statuses.accepted[user.id] is defined %}
+                    {% include 'AppBundle:Network:_item.html.twig' with {'user' : user, 'status' : 'accepted', 'id': statuses.accepted[user.id]} %}
+                {% elseif  user in connections and statuses.pending is defined and  statuses.pending[user.id] is defined %}
+                    {% include 'AppBundle:Network:_item.html.twig' with {'user' : user, 'status' : 'pending', 'id': statuses.pending[user.id]} %}
+                {% else %}
+                    {% include 'AppBundle:Network:_item.html.twig' with {'user' : user, 'status' : 'connect', 'id': user.id} %}
+                {% endif %}                 
+                {% endfor %}                            
+             </div><!-- items -->
+         </div><!-- maby_friends_wrapper -->
+    </div>
+    
+    <script>
+    $(window).load(function () {
+    var imgs = jQuery('.friends_list .item .img img');
+        var imgs = $('.friends_list .item .img img');
+        jQuery.each( imgs, function( i, img ) {
+            var image = new Image();
+            image.src = $(this).attr('src');
+            if(image.naturalWidth > image.naturalHeight){
+                $(this).toggleClass('no-wide-img');
+                $(this).toggleClass('wide-img');
+            }
+        });
+    });
+    
+    </script>
+
+{% endblock %}

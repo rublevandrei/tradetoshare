@@ -1,0 +1,45 @@
+{% extends "::layout.html.twig" %}
+{% block title %}Invite{% endblock %}
+
+{% block content %}
+    <div class="col-sm-8">
+        <section class="profile_member">
+            <h2 class="section_title">Invite Friends</h2>
+            {% if contacts %}
+                <form action="{{ path('contacts_show', {'provider': provider}) }}" class="article_form" method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    {#{% if provider == 'twitter' %}#}
+                    {#<select class="form-control custom-select" required="1" name="contacts">#}
+                    {#{% for key, contact in contacts %}#}
+                    {#<option value="{{ key }}">{{ contact }}</option>#}
+                    {#{% endfor %}#}
+                    {#</select>#}
+                    {#{% else %}#}
+                    {#{{ form_start(form, {'attr': {'class':'comment_form'}}) }}#}
+                    {#{{ form_widget(form) }}#}
+
+                    {#{{ form_end(form) }}#}
+
+                    {% for contact in contacts %}
+                        <div class="form-group">
+                            {% if(contact.avatar != null) %}
+                                <img src="{{ contact.avatar }}" alt="" width="20">
+                            {% else %}
+                                <img src="{{ asset('bundles/framework/images/no_avatar.png') }}" alt="" width="20">
+                                {#<div#}
+                                {#style="background-image:url({{ asset('bundles/framework/images/no_avatar.png') }})"></div>#}
+                            {% endif %}
+                            <input name="contacts[]" type="checkbox" value="{{ contact.email }}" checked="checked">
+                            <label class=" control-label">{{ contact.name }}</label>
+
+                        </div>
+                    {% endfor %}
+                    {#{% endif %}#}
+                    <button type="submit" class="btn btn-primary">Invite</button>
+                </form>
+            {% else %}
+                No Contacts
+            {% endif %}
+        </section>
+    </div>
+{% endblock %}

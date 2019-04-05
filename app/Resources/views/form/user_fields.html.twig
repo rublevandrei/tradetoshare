@@ -1,0 +1,32 @@
+{% block form_row %}
+    {% spaceless %}
+        {% if form.vars.id == 'group_termsAccepted' or form.vars.id == 'group_importFriends' or form.vars.id == 'group_inviteFriend' or form.vars.id == 'group_myNetwork' %}
+            <div class="check_line">
+                {{ form_widget(form) }}
+                <label>  {% if required %}<span>*</span> {% endif %}{{ form.vars.label }}</label>
+
+                {% if form.vars.id == 'group_importFriends' %}
+                    <a href="#" target="_blank">
+                        <img src="{{ asset('bundles/framework/img/fb.png') }}">
+                    </a>
+                    <a href="#" target="_blank">
+                        <img src="{{ asset('bundles/framework/img/in.png') }}">
+                    </a>
+                    <a href="#" target="_blank">
+                        <img src="{{ asset('bundles/framework/img/gp.png') }}">
+                    </a>
+                {% elseif form.vars.id == 'group_termsAccepted' %}
+                    <a href="#">Terms of Service.</a>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="line">
+                <label>{{ form.vars.label }}</label>
+
+                {{ form_errors(form) }}
+                {{ form_widget(form) }}
+            </div>
+        {% endif %}
+
+    {% endspaceless %}
+{% endblock form_row %}

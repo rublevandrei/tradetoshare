@@ -1,0 +1,36 @@
+<div class="modal fade" id="{{ id }}" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{ title }}</h4>
+            </div>
+            <div class="modal-body">
+                <form action="{{ path('security_login_check') }}" method='post' class="form-signin mg-btm">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+                    <div class="row">
+                        <label class="col-md-4 control-label">Email:</label>
+                        <div class="col-md-5">
+                            <input type="text" class="form-" name="_username" placeholder="Email" autofocus="">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-4 control-label">Password:</label>
+                        <div class="col-md-5">
+                            <input type="password" class="form-" name="_password" placeholder="Password">
+                        </div>
+                    </div>
+
+
+                    {#Are you a business? <a href=""> Get started here</a>#}
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+
+                <button type="submit" class="btn btn-danger modal_btn">Log in</button>
+            </div>
+        </div>
+    </div>
+</div>

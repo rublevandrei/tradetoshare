@@ -1,0 +1,64 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                # if you are using Symfony < 2.8, use the following config instead:
+                # csrf_provider: form.csrf_provider
+            oauth:
+                resource_owners:
+                    facebook:           "/login/check-facebook"
+                    google:             "/login/check-google"
+                    twitter:            "/login/check-twitter"
+                    vkontakte:          "/login/check-vkontakte"
+                    odnoklassniki:      "/login/check-odnoklassniki"
+                    tumblr:             "/login/check-tumblr"
+                    instagram:          "/login/check-instagram"
+                    flickr:             "/login/check-flickr"
+                    foursquare:         "/login/check-foursquare"
+                    wordpress:          "/login/check-wordpress"
+                    imgur:              "/login/check-imgur"
+                    imgur2:             "/login/check-imgur2"
+                    pinterest:          "/login/check-pinterest"
+                    yahoo:              "/login/check-yahoo"
+                login_path:        /login
+                use_forward:       false
+                failure_path:      /login
+                always_use_default_target_path: false
+                default_target_path:            /user/connect
+                oauth_user_provider:
+                    service: my_user_provider
+            logout:       true
+            anonymous:    true
+
+    access_control:
+#        - { path: ^/login$, allow_if: "('77.120.152.186' == request.getClientIp() or '99.248.207.219' == request.getClientIp() or '192.186.205.129' == request.getClientIp())", requires_channel: https }
+#        - { path: ^/register, allow_if: "('77.120.152.186' == request.getClientIp() or '99.248.207.219' == request.getClientIp()  or '192.186.205.129' == request.getClientIp())", requires_channel: https }
+        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY  }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/admin/, role: ROLE_USER }
+        - { path: ^/article/, role: ROLE_USER }
+        - { path: ^/company/, role: ROLE_USER }
+        - { path: ^/tradeland/, role: ROLE_USER }
+        - { path: ^/user/, role: ROLE_USER }
+        - { path: ^/network/, role: ROLE_USER }
+        - { path: ^/post/, role: ROLE_USER }
+        - { path: ^/invite/, role: ROLE_USER }
+        - { path: ^/photos/, role: ROLE_USER }
+        - { path: ^/videos/, role: ROLE_USER }

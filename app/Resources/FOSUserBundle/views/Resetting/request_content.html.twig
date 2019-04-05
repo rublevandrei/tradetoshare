@@ -1,0 +1,25 @@
+{% block fos_user_content %}
+    <div class="row register_page">
+        <div class="col-sm-12">
+            <h1 class="register_title text-center">Login</h1>
+        </div>
+
+        <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+            <div>
+                <label for="username">Email</label>
+                <input type="text" id="username" name="username" required="required" />
+            </div>
+            <div class="additional_buttons">
+                <ul>
+                    <li>
+                        <input type="submit" value="Submit" />
+                    </li>
+                </ul>
+            </div>
+
+        </form>
+
+    </div>
+{% endblock %}
+
+

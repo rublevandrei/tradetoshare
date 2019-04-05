@@ -1,0 +1,42 @@
+social_media:
+    resource_owners:
+            Google:
+                client_id:           275255616990-opksacojb5qis0h13l283ui4k4b4k99b.apps.googleusercontent.com
+                client_secret:       73i5kCHJUSDjKL2crcdDlu1Y
+            Twitter:
+                client_id:           jCobVX5xxRGWi0CiqFhPXt5EF
+                client_secret:       xjC0Ash0pY6Qml79isUXseJPW8ME7qkhR3qvNu1rddtmcTtl6f
+            Facebook:
+                client_id:           164967570815052
+                client_secret:       267a92cf5f41f1fff5ed04b27faa2670
+#                client_id:           158935477907055
+#                client_secret:       2e6bad610ae77f2d9a98659839b8ad50
+            Instagram:
+                client_id:           dfea5dd9c58e430591415bd67f70ff84
+                client_secret:       e4ee4c3a2d3e4ea987c9bb89f890b52d
+            Vkontakte:
+                client_id:           6634478
+                client_secret:       MA5JFa2mwp2PB21goPHI
+            Tumblr:
+                client_id:           PxWoCXpbRvkE3Pim5yw7bqxw6GAmCEYaIavKZ7zNV49c0SNJ6D
+                client_secret:       5LhTlqx3eMnGYYPUg6Gt5r2WjVM4Uo2cAjclTNK6vZWzObti7Z
+            Pinterest:
+                client_id:           4978128936694201081
+                client_secret:       f8c7785c08e198c844e095d46981da9734dc0eb201d9775cfa785fd50851ac6e
+            Foursquare:
+                client_id:           0ZYR5EY4JME0TBTFXPHF3NTGAVE1RA4DSFYYADLUNYGG2E5U
+                client_secret:       ISSELCDDDTMQTA25N32N44NL5XJPYNK5NON3DY41HNZDEZDZ
+            Flickr:
+                client_id:           24b5fc7ff2f96bb311fbe0c3fd374ead
+                client_secret:       a4e2d96a78431b81
+            Yahoo:
+                client_id:           dj0yJmk9WG0wVXN6NFU1MHE4JmQ9WVdrOVpEZ3laalJDTTJNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD03YQ--
+                client_secret:       20a48d5c29bd4914cb6eb2810787e9e420044367
+            Imgur:
+                client_id:           f1237214bf18493
+                client_secret:       c639cd29fa6644ff117539201181f2fb448dc67b
+                #client_id:           86745583dc09983
+               # client_secret:       d1997204663db5c96de20f27856417a156f40a99
+            Hotmail:
+                client_id:           d64a5920-b5da-4376-b916-09b87e98752b
+                client_secret:       yWw6MN29kKHAdOQf4Bnz2pE

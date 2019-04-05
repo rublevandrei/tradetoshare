@@ -1,0 +1,36 @@
+{% extends "::layout.html.twig" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+    <div class="row register_page">
+        <div class="col-sm-12">
+            <h1 class="register_title text-center">Login</h1>
+        </div>
+
+        <div class="col-sm-12 login_form">
+            <form action="{{ path('security_login_check') }}" method="post">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+                <input type="text" class="form-" name="_username" placeholder="Email" autofocus="">
+                <input type="password" class="form-" name="_password" placeholder="Password">
+
+                <div class="text-center">
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+            <div class="additional_buttons">
+                <ul>
+                    <li>
+                        <a href="#">Join</a>
+                    </li>
+                    <li>
+                        <a href="#">Lost Password</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+ {% block aside %}
+
+ {% endblock %}

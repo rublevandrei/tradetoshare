@@ -1,0 +1,40 @@
+<div class="colum_left">
+    <div class="colum_wrapper" id="left_colum_wrapper" style="">
+        <div class="colum_block user_profile">
+            <div class="user_profile_wrapper">
+                <div class="user_photo view_photo ">
+                    {% if(app.user.avatar != null) %}
+                        <span class="user_account_img"><img src="{{ asset('bundles/framework/images/user/' ~ app.user.avatar) }}" alt=""/></span>
+                    {% else %}
+                        <span class="user_account_img"><img src="{{ asset('bundles/framework/images/no_avatar.png') }}" alt=""/></span>
+                    {% endif %}
+                </div>
+                <div class="edit_user_profile">
+                    <a href="#"><i class="fa fa-camera" aria-hidden="true"></i><span class="link_name">Refresh photo</span></a>
+                    <a href="{{ path('user_edit') }}"><i class="fa fa-cog" aria-hidden="true"></i><span class="link_name">Edit profile</span></a>
+                </div>
+            </div>
+            <div class="user_profile_socials">
+                <div class="title_block">
+                    <strong>Socials Medial</strong>
+                </div>
+                    <ul class="networks-list" style="height: auto;">
+                        {% for provider in app.user.getProviders %}
+                        <li class="{{ provider.getName }}  " data-provider="{{ provider.getName }}" title="{{ provider.getName }}">
+                            <span></span>
+                            <input class="provider_current" type="hidden" value="{{ provider.getName }}">
+                            <div class="media_actions">                                
+                                <div class="item Delete"><a href="#" class="social action_item" data-action="remove">Delete</a></div>
+                                <div class="item get_post"><a href="#" class="social action_item" data-action="reload">Get Post</a></div>
+                                <div class="item invite_friends"><a class="social" href="{{ path('tradeland_invite') }}">Invite Friends</a></div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                <div class="add_new_network">
+                    <span class="batton">Add new network</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- colum_left -->

@@ -1,0 +1,12 @@
+{% extends "::layout.html.twig" %}
+{% block title %}My Companies{% endblock %}
+
+{% block content %}
+    <div class="col-sm-8">
+        <section class="profile_member">
+            <h2 class="section_title">My Company’s List</h2>
+            <a href="{{ path('company_new') }}" style="float: right">Add Company</a>
+            {% include  'AppBundle:Company:_list.html.twig' %}
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,68 @@
+<div class="item">
+    <div class="top">
+        <div class="img">
+        {% if(user.avatar != null) %}
+            {% if( 'https' in user.avatar) %}
+                <img class="no-wide-img" src="{{ user.avatar }}" alt="{{ user.name }}"/>
+            {% else %}
+				{% if file_exists(root_path ~ '/bundles/framework/images/user/' ~ user.avatar) %}
+					<img class="no-wide-img" src="{{ asset('bundles/framework/images/user/' ~ user.avatar) }}"
+						 alt="{{ user.name }}"/>
+				{% else %}
+					<img class="no-avatar-img" src="{{ asset('bundles/framework/images/no_avatar.png') }}"
+						alt="{{ user.name }}"/>
+				{% endif %}
+                
+            {% endif %}
+        {% else %}
+            <img class="no-avatar-img" src="{{ asset('bundles/framework/images/no_avatar.png') }}"
+                 alt="{{ user.name }}"/>
+        {% endif %}
+        </div>
+        {% if user.status == 'away' %}
+            {% set statusClass = 'fa-clock-o' %}
+        {% elseif user.status == 'busy' %}
+            {% set statusClass = 'fa-minus-circle' %}
+        {% elseif user.status == 'invisible' %}
+            {% set statusClass = 'fa-circle-o' %}
+        {% elseif user.status == 'online' %}
+            {% set statusClass = 'fa-check-circle' %}
+        {% endif %}
+        <div class="user-status_current"><i class="fa {{statusClass}}" aria-hidden="true"></i></div>
+        <div class="actions profile_buttons">
+            <div class="about">
+                <p>{{ user.location }}</p>
+                <p><span>Studied:</span> {{user.lastDiploma}}</p>
+                <p><span>Works at:</span> {{ user.position }} at <a href="#">{{ user.organization }}</a></p>
+            </div>
+            <div class="actions_battons">
+                {% if  status == 'accepted' %}                                    
+                    <a href="#" class="small_batton unfriend" data-connect="{{ user.id }}">Remove</a>
+                {% elseif  status == 'pending' %}
+                    <a class="small_batton connect" href="#" data-connect="{{ user.id }}">
+                        Cancel request
+                    </a>
+                {% else %}
+                    {% if(user.enabled == 1) %}
+                        <a class="connect small_batton" href="#" data-connect="{{ user.id }}">Add Friend</a>                                        
+                    {% else %}
+                        <a class="small_batton disable-button" disabled>Inactive</a>
+                    {% endif %}
+                {% endif %}                                
+                <a href="{{ path('user_show', {'user': user.id}) }}" class="small_batton">View</a>
+            </div>
+        </div>
+    </div>
+    <div class="text">
+        <!--<span class="precent_gift"><i class="fa fa-gift" aria-hidden="true"></i><span class="blind_label">Gift</span></span>-->
+        <a href="{{ path('user_show', {'user': user.id}) }}" class="name">{{ user.name }}</a>
+        <div class="mutual_friends"><a href="">6 mutual friends</a>
+            <div class="list_mutual_friends"><p>
+                <a href="#">Charles Johnson</a>,
+                <a href="#">Ivan Bob</a>,                                            
+                <a href="#">Alexander Developer</a>,
+                <a href="#">Viktor deLafere</a> 
+            </p></div>
+        </div>
+    </div>
+</div>  <!-- item -->

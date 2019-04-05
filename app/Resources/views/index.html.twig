@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta name="author" content="" />
+    <meta name="description" content="" />
+    <meta name="keywords"  content="" />
+    <meta name="Resource-type" content="Document" />
+
+    <link rel="stylesheet" type="text/css" href="{{asset('bundles/framework/css/jquery.pagepiling.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('bundles/framework/css/styles.css')}}" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="{{asset('bundles/framework/js/jquery.pagepiling.js')}}"></script>
+    <script type="text/javascript">
+        var deleteLog = false;
+
+        $(document).ready(function() {
+            $('#pagepiling').pagepiling({
+                menu: '#menu',
+                anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'],
+                navigation: {
+                    'textColor': '#f2f2f2',
+                    'bulletsColor': '#ccc',
+                    'position': 'right',
+                    'tooltips': ['01', '02', '03', '04', '05', '06']
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var heightdisplay = $(".section").height();
+            var widthdisplay = $(".aligne_center").width();
+            $(".midle_aligne").height(heightdisplay);
+            $(".midle_aligne").width(widthdisplay);
+            $(window).bind("resize", function(e){
+                var heightdisplay = $(".section").height();
+                var widthdisplay = $(".aligne_center").width();
+                $(".midle_aligne").height(heightdisplay);
+                $(".midle_aligne").width(widthdisplay);
+            });
+
+            $(".batton_menu").click(function (){
+                if($(this).hasClass("active")){
+                    $("ul#menu").animate({top: "-200px"}, 500 );
+                    $(this).removeClass("active")
+                }
+                else{
+                    $("ul#menu").animate({top: "0px"}, 500 );
+                    $(this).addClass("active")
+                }
+            });
+        });
+    </script>
+    <meta name="viewport" content="width=device-width">
+    <meta name="MobileOptimized" content="320">
+    <meta name="HandheldFriendly" content="true">
+
+</head>
+<body>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '164967570815052',
+            xfbml      : true,
+            version    : 'v2.12'
+        });
+        FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<div class="header">
+    <div class="selector_Languages">
+        <div class="select_Languages"><p><a class="en" href="#">English</a> </p><span>&#9660;</span></div>
+        <div id="Languages">
+            <a class="hy" href="#">Հայերեն</a>
+            <a class="sq" href="#">Shqip</a>
+            <a class="bg" href="#">Български</a>
+            <a class="ca" href="#">Català</a>
+            <a class="cn" href="#">中文简体</a>
+            <a class="hr" href="#">Hrvatski</a>
+            <a class="cs" href="#">Česky</a>
+            <a class="da" href="#">Dansk</a>
+            <a class="nl" href="#">Nederlands</a>
+            <a class="en" href="#">English</a>
+            <a class="et" href="#">Eesti</a>
+            <a class="ph" href="#">Filipino</a>
+            <a class="fi" href="#">Suomi</a>
+            <a class="fr" href="#">Français</a>
+            <a class="ka" href="#">ქართული</a>
+            <a class="de" href="#">Deutsch</a>
+            <a class="el" href="#">Ελληνικά</a>
+            <a class="hi" href="#">हिन्दी</a>
+            <a class="hu" href="#">Magyar</a>
+            <a class="id" href="#">Indonesia</a>
+            <a class="it" href="#">Italiano</a>
+            <a class="lv" href="#">Latviski</a>
+            <a class="lt" href="#">Lietuviškai</a>
+            <a class="mk" href="#">Македонски</a>
+            <a class="ms" href="#">Melayu</a>
+            <a class="no" href="#">Norsk</a>
+            <a class="pl" href="#">Polski</a>
+            <a class="pt" href="#">Português</a>
+            <a class="ro" href="#">Româna</a>
+            <a class="ru zz" href="#">Pyccкий</a>
+            <a class="sr" href="#">Српски</a>
+            <a class="sk" href="#">Slovenčina</a>
+            <a class="sl" href="#">Slovenščina</a>
+            <a class="es" href="#">Español</a>
+            <a class="sv" href="#">Svenska</a>
+            <a class="th" href="#">ไทย</a>
+            <a class="tr" href="#">Türkçe</a>
+            <a class="uk" href="#">Українська</a>
+            <a class="vi" href="#">Tiếng Việt</a> </div>
+    </div>
+    <div class="logo"><span data-menuanchor="page1"><a href="#page1"><img src="{{ asset('bundles/framework/images/logo.png') }}" alt="" /></a></span></div>
+    <div class="search_block">
+        <form action="">
+            <div class="form-item">
+                <input type="text" class="search mandatory" name="search" value="" placeholder="Search to TradeToShare" />
+            </div>
+            <div class="form-ection">
+                <input type="submit" class="" value="" />
+            </div>
+        </form>
+    </div>
+    <div class="main_menu">
+        <div class="batton_menu"></div>
+        <ul id="menu">
+            <li><a href="#">FAQ</a></li>
+            <li>|</li>
+            <li><a href="javascript:void(0)" class="privacy_policy">Terms and Policy</a></li>
+            <li>|</li>
+            <li><a href="javascript:void(0)" class="contact_us">Contact Us</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<div id="pagepiling">
+    <div class="section" id="section1">
+        <div class="aligne_center">
+            <div class="midle">
+                <div class="midle_aligne slider_content">
+                    <div class="logo_fool"><img src="{{ asset('bundles/framework/images/logo_fool.png') }}" alt="" /></div>
+                    <!--  <p>Conect with friends</p>-->
+                    <p>All medials in one pleace</p>
+                    <div class="battons">
+                        <a href="/login"><span class="on_form login_batton">Login</span></a>
+                        <a href="/register"><span class="on_form join_batton">Join</span></a>
+                    </div>
+                    <div class="text">
+
+                        <div class="all_socials">
+                            <p><span style="display: block;text-transform: uppercase;font-weight: bold;">Or</span>Login with social Media</p>
+                            <div class="user_profile_socials">
+                                <ul class="networks-list" style="height: auto;">
+                                    <li class="facebook  " data-provider="facebook" title="facebook">
+                                        <a href="{{ hwi_oauth_login_url('facebook') }}"><span></span></a>
+                                    </li>
+                                    <li class="google " data-provider="google" title="google">
+                                        <a href="{{ hwi_oauth_login_url('google') }}"><span></span></a>
+                                    </li>
+                                    <li class="twitter " data-provider="twitter" title="twitter">
+                                        <a href="{{ hwi_oauth_login_url('twitter') }}"><span></span></a>
+                                    </li>
+                                    <li class="vkontakte " data-provider="vkontakte" title="vkontakte">
+                                        <a href="{{ hwi_oauth_login_url('vkontakte') }}"><span></span></a>
+                                    </li>
+                                    <li class="tumblr " data-provider="tumblr" title="tumblr">
+                                        <a href="{{ hwi_oauth_login_url('tumblr') }}"><span></span></a>
+                                    </li>
+                                    <li class="instagram " data-provider="instagram" title="instagram">
+                                        <a href="{{ hwi_oauth_login_url('instagram') }}"><span></span></a>
+                                    </li>
+                                    <li class="flickr " data-provider="flickr" title="flickr">
+                                        <a href="{{ hwi_oauth_login_url('flickr') }}"><span></span></a>
+                                    </li>
+                                    <li class="foursquare " data-provider="foursquare" title="foursquare">
+                                        <a href="{{ hwi_oauth_login_url('foursquare') }}"><span></span></a>
+                                    </li>
+                                    <li class="yahoo " data-provider="yahoo" title="yahoo">
+                                        <a href="{{ hwi_oauth_login_url('yahoo') }}"><span></span></a>
+                                    </li>
+                                    <li class="imgur " data-provider="imgur" title="imgur">
+                                        <a href="{{ hwi_oauth_login_url('imgur2') }}"><span></span></a>
+                                    </li>
+                                    <li class="pinterest " data-provider="pinterest" title="pinterest">
+                                        <a href="{{ hwi_oauth_login_url('pinterest') }}"><span></span></a>
+                                    </li>
+                                    <li class="ok " data-provider="ok" title="ok">
+                                        <a href="{{ hwi_oauth_login_url('odnoklassniki') }}"><span></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="moreblock">
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="on_2page"><a href="#page2" class="" data-menuanchor="page2" >Whot is TradeToShare?</a></div>
+        <div class="shadow"></div>
+    </div>
+    <div class="section" id="section2">
+        <div class="midle">
+            <div class="midle_aligne slider_content">
+                <h2>TradeToShare lets you connect with all sotcial medial in one place</h2>
+                <div class="text">
+                    <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                        galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+                        electronic typesetting, remaining essentially unchanged.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <a href="#page3" class="button" data-menuanchor="page3" ></a>
+        <div class="shadow"></div>
+    </div>
+    <div class="section" id="section3">
+        <div class="midle">
+            <div class="midle_aligne slider_content">
+                <h2>Here you can publish anything</h2>
+                <div class="items">
+                    <div class="item"><div class="img"><img src="{{ asset('bundles/framework/images/img_Text.jpg') }}" alt="" /></div><p>Text</p></div>
+                    <div class="item"><div class="img"><img src="{{ asset('bundles/framework/images/img_Photo.jpg') }}" alt="" /></div><p>Photo</p></div>
+                    <div class="item"><div class="img"><img src="{{ asset('bundles/framework/images/img_Video.jpg') }}" alt="" /></div><p>Video</p></div>
+                    <div class="item"><div class="img"><img src="{{ asset('bundles/framework/images/img_Chat.jpg') }}" alt="" /></div><p>Chat</p></div>
+                    <div class="item"><div class="img"><img src="{{ asset('bundles/framework/images/img_Audio.jpg') }}" alt="" /></div><p>Audio</p></div>
+                </div>
+                <div class="text">
+                    <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a </p>
+                </div>
+
+            </div>
+
+        </div>
+        <a href="#page4" class="button" data-menuanchor="page4" ></a>
+        <div class="shadow"></div>
+    </div>
+    <div class="section" id="section4">
+
+        <div class="aligne_center_86">
+            <div class="midle">
+                <div class="slider_content">
+                    <h2 class="t1">Connect with friends</h2>
+                    <h2 class="t2">Find new friends</h2>
+                    <div class="text">
+                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type
+                            electronic typesetting, remaining essentially unchanged. </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <a href="#page5" class="button" data-menuanchor="page5" ></a>
+        <div class="shadow"></div>
+    </div>
+    <div class="section" id="section5">
+
+        <div class="aligne_center_86">
+            <div class="midle">
+                <div class="slider_content">
+                    <h2>Create a successful business</h2>
+                    <div class="text">
+                        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type
+                            electronic typesetting, remaining essentially unchanged. </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <a href="#page6" class="button" data-menuanchor="page6" ></a>
+        <div class="shadow"></div>
+    </div>
+    <div class="section" id="section6">
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var widthdisplay = $(".aligne_center_86").width();
+                $(".aligne_center_86 .midle_aligne").width(widthdisplay);
+                $(window).bind("resize", function(e){
+                    var widthdisplay = $(".aligne_center_86").width();
+                    $(".aligne_center_86 .midle_aligne").width(widthdisplay);
+                });
+            });
+        </script>
+        <div class="aligne_center_86">
+            <div class="midle">
+                <div class="midle_aligne slider_content">
+                    <div class="logo_fool"><img src="{{ asset('bundles/framework/images/logo_fool.png') }}" alt="" /></div>
+                    <p>Everything is simple</p>
+                    <div class="battons">
+                        <a href="/login"><span class="on_form login_batton">Login</span></a>
+                        <a href="/register"><span class="on_form join_batton">Join</span></a>
+                    </div>
+                    <div class="text">
+
+                        <div class="all_socials">
+                            <p>With social Media</p>
+                            <div class="user_profile_socials">
+                                <ul class="networks-list" style="height: auto;">
+                                    <li class="facebook  " data-provider="facebook" title="facebook">
+                                        <a href="{{ hwi_oauth_login_url('facebook') }}"><span></span></a>
+                                    </li>
+                                    <li class="google " data-provider="google" title="google">
+                                        <a href="{{ hwi_oauth_login_url('google') }}"><span></span></a>
+                                    </li>
+                                    <li class="twitter " data-provider="twitter" title="twitter">
+                                        <a href="{{ hwi_oauth_login_url('twitter') }}"><span></span></a>
+                                    </li>
+                                    <li class="vkontakte " data-provider="vkontakte" title="vkontakte">
+                                        <a href="{{ hwi_oauth_login_url('vkontakte') }}"><span></span></a>
+                                    </li>
+                                    <li class="tumblr " data-provider="tumblr" title="tumblr">
+                                        <a href="{{ hwi_oauth_login_url('tumblr') }}"><span></span></a>
+                                    </li>
+                                    <li class="instagram " data-provider="instagram" title="instagram">
+                                        <a href="{{ hwi_oauth_login_url('instagram') }}"><span></span></a>
+                                    </li>
+                                    <li class="flickr " data-provider="flickr" title="flickr">
+                                        <a href="{{ hwi_oauth_login_url('flickr') }}"><span></span></a>
+                                    </li>
+                                    <li class="foursquare " data-provider="foursquare" title="foursquare">
+                                        <a href="{{ hwi_oauth_login_url('foursquare') }}"><span></span></a>
+                                    </li>
+                                    <li class="yahoo " data-provider="yahoo" title="yahoo">
+                                        <a href="{{ hwi_oauth_login_url('yahoo') }}"><span></span></a>
+                                    </li>
+                                    <li class="imgur " data-provider="imgur" title="imgur">
+                                        <a href="{{ hwi_oauth_login_url('imgur2') }}"><span></span></a>
+                                    </li>
+                                    <li class="pinterest " data-provider="pinterest" title="pinterest">
+                                        <a href="{{ hwi_oauth_login_url('pinterest') }}"><span></span></a>
+                                    </li>
+                                    <li class="ok " data-provider="ok" title="ok">
+                                        <a href="{{ hwi_oauth_login_url('odnoklassniki') }}"><span></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="moreblock">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="modall modall_form" id="join" >
+    <div class="modall_fon"></div>
+    <div class="modall_block">
+        <div class="order_box">
+            <div class="modal_form_top">
+                <p><strong>Join to TradeToShare</strong></p>
+            </div>
+            <div class="forma" id="join_form">
+                <form  method="post" action="javascript:void(null);" >
+                    <div class="form-item">
+                        <label> </label>
+                        <input type="text" class="name mandatory" name="name" value="" placeholder="Full Name" />
+                        <div class="form_error_block error_block_lendth"><p>Enter Full Name</p> <div></div></div>
+                    </div>
+                    <div class="form-item">
+                        <label> </label>
+                        <input type="text" class="name email" name="email" value="" placeholder="E-mail" />
+                        <div class="form_error_block error_block_lendth"><p>Enter E-mail</p> <div></div></div>
+                    </div>
+                    <div class="form-item">
+                        <label> </label>
+                        <input type="text" class="name password" name="password" value="" placeholder="Password" />
+                        <div class="form_error_block error_block_lendth"><p>Enter Password</p> <div></div></div>
+                    </div>
+                    <div class="form-item">
+                        <label></label>
+                        <input type="text" class="phone password2" name="password2" value="" placeholder="Confirm your password" />
+                        <div class="form_error_block error_block_lendth"><p>Enter Password</p><div></div></div>
+                    </div>
+                    <div class="form-item">
+                        <p style="    padding: 9px 19px 0;font-size: 12px;">By clicking Join, you agree to our Terms and Policy, You may receive  Notifications from TradetoShare and can opt out at any time</p>
+                    </div>
+                    <div class="form-ection">
+                        <input type="submit" class="submit" value="Join" />
+                    </div>
+                </form>
+                <div id="progres1" class="updateProgress_wrapp"><div class="updateProgress"></div></div>
+            </div><!------- forma ---
+        </div>
+        <span class="modallclose"></span>
+    </div>
+</div> <!-- .pop_up back_call end-->
+<!--<div class="modall modall_form" id="login" >
+    <div class="modall_fon"></div>
+    <div class="modall_block">
+        <div class="order_box">
+            <div class="modal_form_top">
+                <p><strong>Login</strong></p>
+            </div>
+            <div class="forma" id="join_form">
+                <form  method="post" action="javascript:void(null);" >
+                    <div class="form-item">
+                        <label> </label>
+                        <input type="text" class="name email" name="email" value="" placeholder="E-mail" />
+                        <div class="form_error_block error_block_lendth"><p>Enter E-mail</p> <div></div></div>
+                    </div>
+                    <div class="form-item">
+                        <label> </label>
+                        <input type="text" class="name password" name="password" value="" placeholder="Password" />
+                        <div class="form_error_block error_block_lendth"><p>Enter Password</p> <div></div></div>
+                    </div>
+                    <div class="form-ection">
+                        <input type="submit" class="submit" value="Login" />
+                    </div>
+                </form>
+                <a class="lost_pass" href="#">Lost Pasword</a>
+                <div id="progres1" class="updateProgress_wrapp"><div class="updateProgress"></div></div>
+            </div><!------- forma ---
+        </div>
+        <span class="modallclose"></span>
+    </div>
+</div> <!-- .pop_up back_call end-->
+<!--<div class="modall modall_form" id="lost_pass" >
+    <div class="modall_fon"></div>
+    <div class="modall_block">
+        <div class="order_box">
+            <div class="modal_form_top">
+                <p><strong>Restore password</strong></p>
+            </div>
+            <div class="forma" id="join_form">
+                <form  method="post" action="javascript:void(null);" >
+                    <div class="form-item">
+                        <label> </label>
+                        <input type="text" class="name email" name="email" value="" placeholder="E-mail" />
+                        <div class="form_error_block error_block_lendth"><p>Enter E-mail</p> <div></div></div>
+                    </div>
+                    <div class="form-ection">
+                        <input type="submit" class="submit" value="Send" />
+                    </div>
+                </form>
+                <div id="progres1" class="updateProgress_wrapp"><div class="updateProgress"></div></div>
+            </div><!------- forma ---
+        </div>
+        <span class="modallclose"></span>
+    </div>
+</div> <!-- .pop_up back_call end-->
+
+<link rel="stylesheet" href="{{ asset('bundles/framework/css/jquery.mCustomScrollbar.min.css') }}" />
+<script src="{{ asset('bundles/framework/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+<script type="text/javascript">
+    (function($){
+        $(window).on("load",function(){
+            $("#privacy_policy .modal_text").mCustomScrollbar({
+                theme:"minimal-light"
+            });
+        });
+    })(jQuery);
+</script>
+<div class="modall modall_form" id="privacy_policy" >
+    <div class="modall_fon"></div>
+    <div class="modall_block">
+        <div class="order_box">
+            <div class="modal_form_top">
+                <p><strong>Terms and Policy</strong></p>
+            </div>
+            <div class="modal_text">
+                <p>A privacy policy is a statement or a legal document (in privacy law) that discloses some or all of the ways a party gathers, uses, discloses, and manages a customer or client's data. It fulfills a legal requirement to protect a customer or client's privacy. Personal information can be anything that can be used to identify an individual, not limited to the person's name, address, date of birth, marital status, contact information, ID issue and expiry date, financial records, credit information, medical history, where one travels, and intentions to acquire goods and services.[1] In the case of a business it is often a statement that declares a party's policy on how it collects, stores, and releases personal information it collects. It informs the client what specific information is collected, and whether it is kept confidential, shared with partners, or sold to other firms or enterprises.</p>
+                <p>The exact contents of a certain privacy policy will depend upon the applicable law and may need to address requirements across geographical boundaries and legal jurisdictions. Most countries have their own legislation and guidelines of who is covered, what information can be collected, and what it can be used for. In general, data protection laws in Europe cover the private sector as well as the public sector. Their privacy laws apply not only to government operations but also to private enterprises and commercial transactions</p>
+                <p>A privacy policy is a statement or a legal document (in privacy law) that discloses some or all of the ways a party gathers, uses, discloses, and manages a customer or client's data. It fulfills a legal requirement to protect a customer or client's privacy. Personal information can be anything that can be used to identify an individual, not limited to the person's name, address, date of birth, marital status, contact information, ID issue and expiry date, financial records, credit information, medical history, where one travels, and intentions to acquire goods and services.[1] In the case of a business it is often a statement that declares a party's policy on how it collects, stores, and releases personal information it collects. It informs the client what specific information is collected, and whether it is kept confidential, shared with partners, or sold to other firms or enterprises.</p>
+                <p>The exact contents of a certain privacy policy will depend upon the applicable law and may need to address requirements across geographical boundaries and legal jurisdictions. Most countries have their own legislation and guidelines of who is covered, what information can be collected, and what it can be used for. In general, data protection laws in Europe cover the private sector as well as the public sector. Their privacy laws apply not only to government operations but also to private enterprises and commercial transactions</p>
+                <p>A privacy policy is a statement or a legal document (in privacy law) that discloses some or all of the ways a party gathers, uses, discloses, and manages a customer or client's data. It fulfills a legal requirement to protect a customer or client's privacy. Personal information can be anything that can be used to identify an individual, not limited to the person's name, address, date of birth, marital status, contact information, ID issue and expiry date, financial records, credit information, medical history, where one travels, and intentions to acquire goods and services.[1] In the case of a business it is often a statement that declares a party's policy on how it collects, stores, and releases personal information it collects. It informs the client what specific information is collected, and whether it is kept confidential, shared with partners, or sold to other firms or enterprises.</p>
+                <p>The exact contents of a certain privacy policy will depend upon the applicable law and may need to address requirements across geographical boundaries and legal jurisdictions. Most countries have their own legislation and guidelines of who is covered, what information can be collected, and what it can be used for. In general, data protection laws in Europe cover the private sector as well as the public sector. Their privacy laws apply not only to government operations but also to private enterprises and commercial transactions</p>
+                <p>A privacy policy is a statement or a legal document (in privacy law) that discloses some or all of the ways a party gathers, uses, discloses, and manages a customer or client's data. It fulfills a legal requirement to protect a customer or client's privacy. Personal information can be anything that can be used to identify an individual, not limited to the person's name, address, date of birth, marital status, contact information, ID issue and expiry date, financial records, credit information, medical history, where one travels, and intentions to acquire goods and services.[1] In the case of a business it is often a statement that declares a party's policy on how it collects, stores, and releases personal information it collects. It informs the client what specific information is collected, and whether it is kept confidential, shared with partners, or sold to other firms or enterprises.</p>
+                <p>The exact contents of a certain privacy policy will depend upon the applicable law and may need to address requirements across geographical boundaries and legal jurisdictions. Most countries have their own legislation and guidelines of who is covered, what information can be collected, and what it can be used for. In general, data protection laws in Europe cover the private sector as well as the public sector. Their privacy laws apply not only to government operations but also to private enterprises and commercial transactions</p>
+            </div>
+        </div>
+        <span class="modallclose"></span>
+    </div>
+</div> <!-- .pop_up end-->
+
+<div class="modall modall_form" id="contact_us" >
+    <div class="modall_fon"></div>
+    <div class="modall_block">
+        <div class="order_box">
+            <div class="modal_form_top">
+                <p><strong>Contact Us</strong></p>
+            </div>
+            <div class="contact_modal_text">
+                <p>If you have any questions please  send email to support@tradetoshare.com</p>
+            </div>
+        </div>
+        <span class="modallclose"></span>
+    </div>
+</div> <!-- .pop_up  end-->
+
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".modallclose").click(function (){
+            $(".modall").fadeOut();
+        });
+        $(".modall_fon").click(function (){
+            $(".modall").fadeOut();
+        });
+        $(".join_batton").click(function (){
+            $("#join").fadeIn();
+            var display_h = window.innerHeight;
+            var modal_h = $("#join .modall_block").height();
+            var position_top = display_h - modal_h;
+            var position_top = position_top/2.5;
+            $("#join .modall_block").css("top", position_top);
+        });
+        $(".login_batton").click(function (){
+            $("#login").fadeIn();
+            var display_h = window.innerHeight;
+            var modal_h = $("#login .modall_block").height();
+            var position_top = display_h - modal_h;
+            var position_top = position_top/2.5;
+            $("#login .modall_block").css("top", position_top);
+        });
+        $(".lost_pass").click(function (){
+            $(".modall").fadeOut();
+            $("#lost_pass").fadeIn();
+            var display_h = window.innerHeight;
+            var modal_h = $("#lost_pass .modall_block").height();
+            var position_top = display_h - modal_h;
+            var position_top = position_top/2.5;
+            $("#lost_pass .modall_block").css("top", position_top);
+        });
+        $(".privacy_policy").click(function (){
+
+            $("#privacy_policy").fadeIn();
+            var display_h = window.innerHeight;
+            var modal_h = $("#privacy_policy .modall_block").height();
+            var position_top = display_h - modal_h;
+            var position_top = position_top/3.2;
+            $("#privacy_policy .modall_block").css("top", position_top);
+        });
+        $(".contact_us").click(function (){
+            $("#contact_us").fadeIn();
+            var display_h = window.innerHeight;
+            var modal_h = $("#contact_us .modall_block").height();
+            var position_top = display_h - modal_h;
+            var position_top = position_top/3.2;
+            $("#contact_us .modall_block").css("top", position_top);
+        });
+
+    });
+    $(document).ready(function() {
+        $(".selector_Languages .select_Languages").click(function (){
+
+            if($(this).hasClass("active")){
+                $(this).next("#Languages").css("display", "none");
+                $(this).removeClass("active");
+
+            }
+            else{
+                $(this).next("#Languages").css("display", "block");
+                $(this).addClass("active");
+
+            }
+            event.preventDefault();
+        });
+        $("#Languages a").click(function (){
+            var elemhtml = $(this).get(0).outerHTML;
+            $(".selector_Languages .select_Languages p").html(elemhtml);
+            $(".selector_Languages .select_Languages").removeClass("active");$("#Languages").css("display", "none");
+            event.preventDefault();
+        })
+    });
+    $(document).mouseup(function (e) {
+        var container = $(".selector_Languages");
+        if (container.has(e.target).length === 0){
+            $(".selector_Languages .select_Languages").removeClass("active");$("#Languages").css("display", "none");
+        }
+    });
+
+</script>
+
+</body>
+</html>
+

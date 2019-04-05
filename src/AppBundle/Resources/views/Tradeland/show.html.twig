@@ -1,0 +1,78 @@
+{% extends "::layout.html.twig" %}
+{% block title %}{{ tradeland.name }}{% endblock %}
+
+{% block content %}
+    <div class="col-sm-8">
+        <div class="group_page">
+            <div class="group_banner" style="background-image:url('images/img-4.png')">
+                <div class="upload_photo">
+                    <i class="fa fa-camera" aria-hidden="true"></i>
+                    <span>Photo</span>
+                </div>
+            </div>
+            <div class="group_description">
+                <div class="profile-main-box company-box">
+                    <div class="content">
+                        <h2>{{ tradeland.name }}</h2>
+                        <h4>{{ tradeland.name }}</h4>
+                    </div>
+                    <div class="profile_buttons group_item">
+                        <ul>
+                            <li>
+                                {% if app.user in tradeland.users or app.user == tradeland.owner %}
+                                    <a class="connect leave" href="#" data-group="{{ tradeland.id }}">
+                                        <span>Leave</span>
+                                    </a>
+                                {% else %}
+                                    <a class="join" href="#" data-group="{{ tradeland.id }}">
+                                        <span>Join</span>
+                                    </a>
+                                {% endif %}
+
+                            </li>
+                            <li>
+                                <a class="message" href="#">
+                                    <span>Message</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="members" href="{{ path('tradeland_members', {'tradeland': tradeland.id}) }}">
+                                    <span>Members</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="tlandinfo" href="{{ path('tradeland_invite') }}">
+                                    <span>Invite Friend</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline_container">
+
+            {% if app.user in tradeland.users or app.user == tradeland.owner %}
+                {{ render(controller('AppBundle:Post:new', {'tradeland': tradeland.id})) }}
+            {% endif %}
+            <div class="post_feed_block">
+
+                {% for post in posts %}
+                  {% include 'AppBundle:Post:_item.html.twig' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {#<div class="col-sm-8">#}
+      {#<h2>{{ tradeland.name }}</h2>#}
+        {#<h3>User List:</h3>#}
+        {#<ul>#}
+        {#{% for user in tradeland.users %}#}
+            {#<li>{{ user.name }}</li>#}
+        {#{% endfor %}#}
+        {#</ul>#}
+    {#</div>#}
+
+
+{% endblock %}

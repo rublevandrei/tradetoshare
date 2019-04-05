@@ -1,0 +1,48 @@
+{% extends "::layout.html.twig" %}
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+
+    <div class="col-md-8">
+        <section class="articles_page">
+            <div class="article_innerpage_content">
+                <h2 class="section_title">{{ article.title }}</h2>
+                <div class="time">
+                    <span class="posted_in">Posted: {{ article.getCreatedAt()|date('Y-m-d H:ia') }}</span>
+                    <span> | </span>
+                    <span class="updated_in">Updated: {{ article.getUpdatedAt()|date('Y-m-d H:ia') }}</span>
+                </div>
+                {% if(article.image != null) %}
+                    <img src="{{ asset('bundles/framework/images/article/' ~ article.image) }}"
+                         alt="{{ article.title }}"/>
+                {% else %}
+                    <img src="{{ asset('bundles/framework/images/no-logo.png') }}"
+                         alt="{{ article.title }}"/>
+                {% endif %}
+                {{ article.description|raw }}
+            </div>
+            <h3 class="section_subtitle">Articles from the same author</h3>
+            <div class="row articles_grid">
+                {% for sameArticle in articles %}
+                    <div class="col-md-6 article_block matchHeight_add">
+                        <a href="{{ path('article_show', {id: sameArticle.id}) }}">
+                            <h2 class="matchHeight">
+                                {{ sameArticle.title }}
+                            </h2>
+                            <div class="image">
+                                {% if(sameArticle.image != null) %}
+                                    <img src="{{ asset('bundles/framework/images/article/' ~ sameArticle.image) }}"
+                                         alt="{{ sameArticle.title }}"/>
+                                {% else %}
+                                    <img src="{{ asset('bundles/framework/images/no-logo.png') }}"
+                                         alt="{{ sameArticle.title }}"/>
+                                {% endif %}
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

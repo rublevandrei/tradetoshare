@@ -1,0 +1,62 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+secure:
+    path:     /secure
+    defaults: { _controller: AppBundle:Main:secure }
+    schemes:  [https]
+hwi_oauth_security:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix: /login
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix: /login
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /login
+facebook_login:
+    path: /login/check-facebook
+google_login:
+    path: /login/check-google
+twitter_login:
+    path: /login/check-twitter
+tumblr_login:
+    path: /login/check-tumblr
+vkontakte_login:
+    path: /login/check-vkontakte
+odnoklassniki_login:
+    path: /login/check-odnoklassniki
+instagram_login:
+    path: /login/check-instagram
+flickr_login:
+    path: /login/check-flickr
+foursquare_login:
+    path: /login/check-foursquare
+wordpress_login:
+    path: /login/check-wordpress
+imgur_login:
+    path: /login/check-imgur
+imgur2_login:
+    path: /login/check-imgur2
+pinterest_login:
+    path: /login/check-pinterest
+yahoo_login:
+    path: /login/check-yahoo
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+fos_user_group:
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+    prefix: /group
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /admin
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

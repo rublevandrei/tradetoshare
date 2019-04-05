@@ -1,0 +1,30 @@
+<div class="col-sm-6">
+    <div class="profile-main-box group_item">
+        <div class="profile_image">
+            <div class="image">
+                <img src="images/pro-img.png" alt='profile img'>
+            </div>
+        </div>
+        <div class="profile_buttons">
+            <div class="profile_info">
+                <h4 class="heading">{{ tradeland.name }}</h4>
+                {#<ul>#}
+                    {#<li class="members">#}
+                        {#<span>Members: 20</span>#}
+                    {#</li>#}
+                {#</ul>#}
+            </div>
+            <ul>
+                <li>
+                    <a class="connect" href="{{ path('tradeland_show', {'tradeland': tradeland.id}) }}">
+                        <span>View</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="unfriend {{ button }}" href="#" data-group="{{ tradeland.id }}">
+                        <span>{{ button }}</span>
+                    </a>
+                </li>
+        </div>
+    </div>
+</div>

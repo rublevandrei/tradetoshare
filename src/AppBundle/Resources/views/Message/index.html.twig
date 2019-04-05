@@ -1,0 +1,106 @@
+{% extends "::layout.html.twig" %}
+{% block title %}Messages{% endblock %}
+
+{% block content %}
+
+    <div class="col-md-8 your_profile">
+        <h1 class="section_title">Messages</h1>
+        <div class="profile_container clearfix">
+            <div class="content_box clearfix">
+                <div class="image matchHeight">
+                    <a href="#">
+                        <img src="{{ asset('bundles/framework/images/no_avatar.png') }}" alt="Person Title">
+                    </a>
+                </div>
+                <div class="content matchHeight">
+                    <h5 class="title">Edith Onderick-Harvey</h5>
+                    <span>
+								<a href="#">Autor</a> | <a href="#">Speacker</a> | Leadership and organization consult...
+							</span>
+                    <span class="date">
+								Apr 21
+							</span>
+                    <div class="text_content">
+                        <p>
+                            Hello Olena
+                        </p>
+                        <p>
+                            Ihope you are having a great start to this yar!
+                        </p>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the
+                            1500s, when an unknown printer took a galley of type and scrambled it to
+                            make a type specimen book. It has survived not only five centuries, but also
+                            the leap into electronic typesetting, remaining essentially unchanged. It was
+                            popularised in the 1960s with the release of Letraset sheets containing
+                            Lorem Ipsum passages, and more recently with desktop publishing software
+                            like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                        <form action="#" method="post">
+                            <div class="textarea">
+                                <textarea placeholder="Click here to reply or forward"></textarea>
+                                <div class="additional_buttons">
+                                    <a href="#">
+                                        <img src="{{ asset('bundles/framework/img/form_img.png') }}" alt="image">
+                                    </a>
+                                    <a href="#">
+                                        <img src="{{ asset('bundles/framework/img/form_file.png') }}" alt="file">
+                                    </a>
+                                    <a href="#">
+                                        <img src="{{ asset('bundles/framework/img/form_smile.png') }}" alt="smile">
+                                    </a>
+                                    <label>
+                                        <input type="checkbox" name="">
+                                        press enter to send
+                                    </label>
+                                </div>
+                            </div>
+                            <input type="submit" value="Send">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="search_box">
+                <h5>Messages</h5>
+                <form>
+                    <input type="search" placeholder="search">
+                </form>
+                <div class="person_container clearfix">
+                    {% for message in messages %}
+                        <div class="person_item clearfix">
+                            <div class="image matchHeight">
+
+                                <a href="{{ path('user_show', {'user': message.from.id}) }}">
+                                    {% if(message.from.avatar != null) %}
+                                        <img src="{{ asset('bundles/framework/images/user/' ~ message.from.avatar) }}"
+                                             alt='profile img'>
+                                    {% else %}
+                                        <img src="{{ asset('bundles/framework/images/no_avatar.png') }}" alt='profile img'>
+                                    {% endif %}
+
+                                </a>
+                            </div>
+                            <div class="person_cont matchHeight">
+                                <h5 class="person_title">
+                                    <a href="{{ path('user_show', {'user': message.from.id}) }}">
+                                        {{ message.from.name }}
+                                    </a>
+                                    <span>July 5</span>
+                                </h5>
+                                <p>
+                                    {{ message.message }}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+

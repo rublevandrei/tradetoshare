@@ -1,0 +1,130 @@
+<div class="colum_block post_block">
+<div class="post_top">
+    <div class="post_user">
+        <div class="post_control">
+            <div class="post_control_wrapp">...</div>
+            <div class="more_actions">
+                <span class="delete">Delete Post</span>
+                <span class="pin_post">Pin Post</span>
+                <span class="unpin_post">Hide Post</span>
+            </div>
+        </div>
+        {% if(post.user.avatar != null) %}
+            <a href="{{ path('user_show', {'user': post.user.id}) }}" class="user_post_img">
+               <img src="{{ asset('bundles/framework/images/user/' ~ post.user.avatar) }}"  alt="">
+            </a>
+        {% else %}
+            <a href="#" class="user_post_img"><img src="{{ asset('bundles/framework/images/no_avatar.png') }}" alt=""></a>
+        {% endif %}
+        <div class="user_post_name_wrapp">
+            <div class="post_from">
+                <span>Post from </span><a href="" class="ico_socials {{ post.socialProvider?post.socialProvider:'tts' }}"><span></span></a> <!-- stule.css -> 3083 -->
+            </div>
+            {% if post.originUser != null %}
+                <span>►</span>
+                <a href="{{ path('user_show', {'user': post.originUser.id}) }}"
+                   class="user_post_name">{{ post.originUser.name }}</a>
+            {% else %}
+                <a href="#" class="user_post_name">{{ post.user.name }}</a>
+            {% endif %}
+        </div>
+        <span class="post_date">{{ post.createdAt|date('Y-m-d H:i') }}</span>
+    </div>
+</div>
+<div class="post_body">
+    <p>{{ post.text |striptags('<img>,<video>,<source>')|raw }}</p>
+    <div style="text-align: center">
+        {% for media in post.media %}
+            <img src="{{ asset('bundles/framework/images/post/' ~ media.name) }}" alt="">
+        {% endfor %}
+    </div>
+</div>
+<div class="post_bottom">
+    <div class="post_action">
+        <div class="post_action_wrapper">
+            <div class="item item_vote_tts">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                <span>Vote <strong>18</strong></span>
+            </div>
+            <div class="item item_comments_tts">
+                <i class="fa fa-comments" aria-hidden="true"></i>
+                <span>Comment</span>
+            </div>
+            <div class="item item_share_tts">
+                <i class="fa fa-share" aria-hidden="true"></i>
+                <span>Share</span>
+            </div>
+            <div class="item item_share_netwokr">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+                <span>Share Network</span>
+            </div>
+        </div>
+    </div>
+    <div class="post_comments">
+        <div class="post_comments_wrapper">
+            {% for comment in post.comments %}
+                <div class="post_comment">
+                    <div class="post_control">
+                        <div class="post_control_wrapp">...</div>
+                        <div class="more_actions">
+                            <span class="delete">Delete Post</span>
+                            <span class="pin_post">Pin Post</span>
+                            <span class="unpin_post">Hide Post</span>
+                        </div>
+                    </div>
+                    <div class="post_comment_user_photo">
+                        {% if(comment.user.avatar != null) %}
+                            <a href="#" class="user_post_img"><img src="{{ asset('bundles/framework/images/user/' ~ app.user.avatar) }}" alt=""></a>
+                        {% else %}
+                            <a href="#" class="user_post_img"><img src="{{ asset('bundles/framework/images/no_avatar.png') }}" alt=""></a>
+                        {% endif %}
+                    </div>
+                    <div class="post_comment_top">
+                        <a href="{{ path('user_show', {'user': comment.user.id}) }}"
+                           class="user_post_name">{{ comment.user.name }}</a>
+                        <span class="post_date">{{ comment.updatedAt|date('Y-m-d H:i') }}</span>
+                    </div>
+                    <div class="post_coment_body">
+                        <p>{{ comment.text }}</p>
+                    </div>
+                    <div class="post_comment_top">
+                        <div class="post_action">
+                            <div class="post_action_wrapper">
+                                <div class="item item_vote_tts">
+                                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                                    <span>Vote <strong>18</strong></span>
+                                </div>
+                                <div class="item item_comments_tts">
+                                    <i class="fa fa-comments" aria-hidden="true"></i>
+                                    <span>Comment</span>
+                                </div>
+                                <div class="item item_share_tts">
+                                    <i class="fa fa-share" aria-hidden="true"></i>
+                                    <span>Share</span>
+                                </div>
+                                <div class="item item_share_netwokr">
+                                    <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                    <span>Share Network</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        <div class="post_comments_form">
+            {% if(app.user.avatar != null) %}
+                <span class="user_account_img">
+                   <img src="{{ asset('bundles/framework/images/user/' ~ app.user.avatar) }}">
+                </span>
+            {% else %}
+                <span class="user_account_img"><img src="{{ asset('bundles/framework/images/no_avatar.png') }}" alt=""/></span>
+            {% endif %}
+
+            {#<div> {% include '@App/Comment/new.html.twig' with  {'post': post} %}</div>#}
+            {{ render(controller('AppBundle:Comment:new', {'post': post.id})) }}
+        </div>
+        </div>
+    </div>
+</div>
+</div><!-- post -->

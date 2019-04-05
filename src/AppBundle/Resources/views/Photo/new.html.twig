@@ -1,0 +1,45 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Photo{% endblock %}
+
+{% block content %}
+    <div class="colum_block items_list">
+        <section class="heading">
+            <h2>Add Photo</h2>
+            <div class="buttons-container">
+                <a href="{{ path('photo_index') }}" class="back button">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                    <span>Back</span>
+                </a>
+            </div>
+        </section>
+        <section class="item-single">
+            {{ form_start(form, {'attr': {'class': 'photo_form', novalidate: 'novalidate'}}) }}
+                {{ form_errors(form) }}
+                {{ form_row(form.title) }}
+                {{ form_row(form.description) }}
+                {{ form_row(form.image) }}
+                <input type="submit" name="" value="Add Photo" class="button">
+            {{ form_end(form) }}
+        </section>
+    </div>
+
+    <script src="http://cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: 200,
+            menubar: false,
+            resize: false,
+            plugins: [
+                'advlist autolink lists link charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code'
+            ],
+            toolbar: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link',
+            content_css: '//www.tinymce.com/css/codepen.min.css'
+        });
+    </script>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% block form_row %}
+    {% spaceless %}
+
+        <label>{{ form.vars.label }}
+            {% if required and form.vars.id != 'company_termsAccepted' %}<span>*</span>{% endif %}
+        </label>
+
+        {#{% if form.vars.id == 'company_location' %}#}
+        {#(Add up to 5 different locations)#}
+        {#{% elseif form.vars.id == 'company_description' %}#}
+        {#(1059 out of 2,000 characters)#}
+        {#{% endif %}#}
+        {{ form_errors(form) }}
+        {{ form_widget(form) }}
+
+    {% endspaceless %}
+{% endblock form_row %}

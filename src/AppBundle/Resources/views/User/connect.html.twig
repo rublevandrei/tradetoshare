@@ -1,0 +1,29 @@
+{% extends "::layout.html.twig" %}
+
+{% block content %}
+
+    <div class="colum_block import_friends">
+        <div class="title_block">
+            <a href="/">Ask me later</a>
+            <strong>You can still connect with more social media</strong>
+        </div>
+        
+        <div class="user_profile_socials">  
+		<ul class="networks-list" style="">			    		                            
+                            {% for provider in app.user.noneSetProviders %}
+	                        <li class="{{ provider }}" data-provider="{{ provider }}" title="{{ provider }}">
+	                            <a href="{{ hwi_oauth_login_url(provider) }}">
+	                                <span></span>
+	                            </a>
+	                        </li>
+	                    {% endfor %}
+                     </ul>
+        </div>
+
+	{% if error is defined and error %}
+            <span>{{ error }}</span>
+        {% endif %}
+    
+{% endblock %}
+
+ {% block aside %} {% endblock %}

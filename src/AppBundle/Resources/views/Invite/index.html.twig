@@ -1,0 +1,28 @@
+{% extends "::layout.html.twig" %}
+{% block title %}Invite{% endblock %}
+
+{% block content %}
+    <div class="col-sm-8">
+        <section class="profile_member">
+            <h2 class="section_title">Invite Friends</h2>
+            <ul class="social-media">
+                <li><a href="{{ path('contacts_show', {provider: 'facebook'}) }}"><i class="fa fa-facebook-official fa-2x" title="facebook" aria-hidden="true"></i></a></li>
+                <li><a href="{{ path('contacts_show', {provider: 'google'}) }}"><i class="fa fa-google-plus-official fa-2x" title="google" aria-hidden="true"></i></a></li>
+                <li><a href="{{ path('contacts_show', {provider: 'twitter'}) }}"><i class="fa fa-twitter fa-2x" title="twitter" aria-hidden="true"></i></a></li>
+                <li><a href="{{ path('contacts_show', {provider: 'vkontakte'}) }}"><i class="fa fa-vk fa-2x" title="vkontakte" aria-hidden="true"></i></a></li>
+                <li><a href="{{ path('contacts_show', {provider: 'tumblr'}) }}"><i class="fa fa-tumblr fa-2x" title="tumblr" aria-hidden="true"></i></a></li>
+                <li><a href="{{ path('contacts_show', {provider: 'instagram'}) }}"><i class="fa fa-instagram fa-2x" title="instagram" aria-hidden="true"></i></a></li>
+                <li><a href="{{ path('contacts_show', {provider: 'flickr'}) }}"><i class="fa fa-flickr fa-2x" title="flickr" aria-hidden="true"></i></a></li>
+                <li><a href="{{ path('contacts_show', {provider: 'foursquare'}) }}"><i class="fa fa-foursquare fa-2x" title="foursquare" aria-hidden="true"></i></a></li>
+                <li><a href="{{ path('contacts_show', {provider: 'yahoo'}) }}"><i class="fa fa-yahoo fa-2x" title="yahoo" aria-hidden="true"></i></a></li>
+                <li><a href="{{ path('contacts_show', {provider: 'imgur'}) }}"><i class="fa fa-info fa-2x" title="imgur" aria-hidden="true"></i></a></li>
+                <li><a href="{{ path('contacts_show', {provider: 'pinterest'}) }}"><i class="fa fa-pinterest fa-2x" title="pinterest" aria-hidden="true"></i></a></li>
+                <li><a href="{{ path('contacts_show', {provider: 'odnoklassniki'}) }}"><i class="fa fa-odnoklassniki fa-2x" title="odnoklassniki" aria-hidden="true"></i></a></li>
+                <li><a href="{{ path('contacts_show', {provider: 'wordpress'}) }}"><i class="fa fa-wordpress fa-2x" title="wordpress" aria-hidden="true"></i></a></li>
+            </ul>
+            {#<a href="{{ path('contacts_show', {provider: 'facebook'}) }}"><img src="{{ asset('bundles/framework/img/fb.png') }}" alt="Facebook"></a>#}
+            {#<a href="{{ path('contacts_show', {provider: 'google'}) }}"><img src="{{ asset('bundles/framework/img/gp.png') }}" alt="Google+"></a>#}
+            {#<a href="{{ path('contacts_show', {provider: 'twitter'}) }}"><img src="{{ asset('bundles/framework/img/tw.png') }}" alt="Twitter"></a>#}
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,127 @@
+<div class="col-md-2 left_sidebar">
+    <div class="left_filter left_filter_open">
+        <div class="wrapp_filter_blocks ">
+            <div class="left_conteiner">
+
+                <div class="filter_block statys_filter_block">
+                    <div class="filter_block_content_wrapp">
+                        <div class="title_filter_block"><i class="fa fa-binoculars" aria-hidden="true"></i>
+                            <p>Status <i class="fa fa-caret-down" aria-hidden="true"></i><i class="fa fa-caret-up"
+                                                                                            aria-hidden="true"></i></p>
+                        </div>
+                        <div class="filter_block_content">
+                            <ul class="user-status">
+                                <li class="item_away {% if( app.user.status == 'away') %} active {% endif %}"><a
+                                            href="#" data-status="away"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                                        - Away</a></li>
+                                <li class="item_online {% if( app.user.status == 'online') %} active {% endif %}"><a
+                                            href="#" data-status="online"><i class="fa fa-check-circle"
+                                                                             aria-hidden="true"></i> - Online</a></li>
+                                <li class="item_invisible {% if( app.user.status == 'invisible') %} active {% endif %}">
+                                    <a href="#" data-status="invisible"><i class="fa fa-circle-o"
+                                                                           aria-hidden="true"></i> - Invisible</a></li>
+                                <li class="item_busy {% if( app.user.status == 'busy') %} active {% endif %}"><a
+                                            href="#" data-status="busy"><i class="fa fa-minus-circle"
+                                                                           aria-hidden="true"></i> - Busy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!-- .filter_block .statys_filter_block-->
+                <div class="filter_block socials_filter_block">
+                    <div class="filter_block_content_wrapp">
+                        <div class="title_filter_block">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <p>Social <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                <i class="fa fa-caret-up" aria-hidden="true"></i>
+                            </p>
+                        </div>
+                        <div class="filter_actions">
+                            <p><i class="fa fa-caret-down" aria-hidden="true"></i><span>Actions</span></p>
+                            <ul class="actions_list">
+                                <li><a href="#" class="action_item" data-action="reload">Reload</a></li>
+                                <li><a href="{{ path('tradeland_invite') }}">Invite Friends</a></li>
+                                <li><a href="#" class="action_item" data-action="remove">Remove</a></li>
+                                <li><a href="{{ path('user_connect') }}">Add New</a></li>
+                                <li><a href="#" class="action_item" data-action="notification">Notification</a></li>
+                            </ul>
+                        </div>
+                        <div class="filter_block_content">
+
+                            <ul class="networks-list">
+                                {#<li class="all_socials">#}
+                                {#<i class="fa fa-square-o" aria-hidden="true"></i>#}
+                                {#<i class="fa fa-check-square-o" aria-hidden="true"></i>#}
+                                {#<p>Select All</p>#}
+                                {#</li>#}
+                                {% for provider in app.user.getProviders %}
+                                    {# 'yahoo','odnoklasniki', 'wordpres',#}
+                                    <li class="{{ provider }} {% if(loop.first) %} active {% endif %}" data-provider="{{ provider }}" title="{{ provider }}">
+                                        <i class="fa fa-square-o" aria-hidden="true"></i>
+                                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                                        <span></span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            <div class="show_all"><span>See more</span></div>
+                        </div>
+                    </div>
+                </div><!-- .filter_block .socials_filter_block-->
+                <div class="filter_block images_filter_block">
+                    <div class="filter_block_content_wrapp">
+                        <div class="title_filter_block"><i class="fa fa-picture-o" aria-hidden="true"></i>
+                            <p>Images <i class="fa fa-caret-down" aria-hidden="true"></i><i class="fa fa-caret-up"
+                                                                                            aria-hidden="true"></i></p>
+                        </div>
+                        <div class="filter_block_content">
+                            <p class="t1"><a href="#">My Images <span>(62)</span></a></p>
+                            <div class="items">
+                                <div class="item"><a href="../../bundles/framework/images/test/IMG_0130.jpg"><span><img
+                                                    src="../../bundles/framework/images/test/IMG_0130.jpg"
+                                                    alt="feed image"></span></a></div>
+                                <div class="item"><a href="../../bundles/framework/images/test/natalie.jpg"><span><img
+                                                    src="../../bundles/framework/images/test/natalie.jpg"
+                                                    alt="feed image"></span></a></div>
+                                <div class="item"><a
+                                            href="../../bundles/framework/images/test/NatalieBurn001.png"><span><img
+                                                    src="../../bundles/framework/images/test/NatalieBurn001.png"
+                                                    alt="feed image"></span></a></div>
+                            </div>
+
+                            <div class="filter_block_panel">
+                                <a href="#" class="a_left">Upload Images</a>
+                                <a href="#" class="a_right">Customize Images</a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .filter_block .images_filter_block-->
+                <div class="filter_block videos_filter_block">
+                    <div class="filter_block_content_wrapp">
+                        <div class="title_filter_block"><i class="fa fa-video-camera" aria-hidden="true"></i>
+                            <p>Videos <i class="fa fa-caret-down" aria-hidden="true"></i><i class="fa fa-caret-up"
+                                                                                            aria-hidden="true"></i></p>
+                        </div>
+                        <div class="filter_block_content">
+                            <p class="t1"><a href="#">My Videos <span>(35)</span></a></p>
+                            <div class="items">
+                                <div class="item"><a href="#"><span><img
+                                                    src="../../bundles/framework/images/test/IMG_0130.jpg"
+                                                    alt="feed image"></span></a></div>
+                                <div class="item"><a href="#"><span><img
+                                                    src="../../bundles/framework/images/test/NatalieBurn001.png"
+                                                    alt="feed image"></span></a></div>
+                                <div class="item"><a href="#"><span><img
+                                                    src="../../bundles/framework/images/test/natalie.jpg"
+                                                    alt="feed image"></span></a></div>
+                            </div>
+
+                            <div class="filter_block_panel">
+                                <a href="#" class="a_left">Upload Video</a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .filter_block .videos_filter_block-->
+            </div><!-- left_conteiner -->
+
+        </div><!-- wrapp_left_filter mCustomScrollbar -->
+    </div> <!-- left_filter -->
+</div>

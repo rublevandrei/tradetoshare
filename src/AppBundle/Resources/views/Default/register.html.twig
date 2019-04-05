@@ -1,0 +1,19 @@
+{% extends "::layout.html.twig" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <div class="col-sm-12">
+        <h1 class="register_title text-center">Join</h1>
+    </div>
+    <div class="col-sm-12 registration_form">
+        {{ form_start(form) }}
+        {% form_theme form 'form/fields.html.twig' %}
+        {{ form_widget(form) }}
+        <div class="text-center">
+            <input type="submit" value="Sign Up">
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+{% block aside %}
+{% endblock %}

@@ -1,0 +1,73 @@
+{{ form_start(form) }}
+<div class="add_post_content">
+    <div class="form-item">
+        <label></label>
+            {{ form_row(form.text, {'attr': {'placeholder': 'Write a comment.....'}}) }}
+    </div>
+    <div class="form_bottom">
+        <div class="form-ection">
+            <input type="submit" class="submit" value="Post" />
+        </div>
+        <div class="media_selector">
+            <a class="ms_item_photo" tabindex="0" data-title="Photo" aria-label="Photo" role="link"><i class="fa fa-camera" aria-hidden="true"></i><span class="blind_label">Photo</span></a>
+            <a class="ms_item_video" tabindex="0" data-title="Video" aria-label="Video" role="link"><i class="fa fa-video-camera" aria-hidden="true"></i><span class="blind_label">Video</span></a>
+            <div class="ms_items_more_wrap">
+                <a class="ms_item_smile" tabindex="0" data-title="Smile" aria-label="Smile" role="link"><i class="fa fa-smile-o" aria-hidden="true"></i><span class="blind_label">Smile</span></a>
+                <div class="more_actions">
+                    <ul class="dropdown-menu smile-icons">
+                        <li>Smile icons</li>
+                        <li>
+                            <span>😀</span>
+                            <span>😁</span>
+                            <span>😆</span>
+                            <span>😅</span>
+                            <span>😂</span>
+                            <span>😇</span>
+                            <span>🙂</span>
+                            <span>😉</span>
+                            <span>😍</span>
+                            <span>😘</span>
+                            <span>😜</span>
+                            <span>😝</span>
+                            <span>😋</span>
+                            <span>😎</span>
+                            <span>😒</span>
+                            <span>😏</span>
+                            <span>😞</span>
+                            <span>😔</span>
+                            <span>😟</span>
+                            <span>🙁</span>
+                            <span>😫</span>
+                            <span>😢</span>
+                            <span>😥</span>
+                            <span>😭</span>
+                            <span>😴</span>
+                            <span>🤔</span>
+                            <span>😬</span>
+                            <span>😈</span>
+                            <span>💩</span>
+                            <span>🤝</span>
+                            <span>👍</span>
+                            <span>👎</span>
+                            <span>✌</span>
+                            <span>🤘</span>
+                            <span>👌</span>
+                            <span>☝</span>
+                            <span>✋</span>
+                            <span>🖕</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}
+
+{#
+<form action="{{ path('comment_new', {post: post.id}) }}" method="post">
+    <input type="hidden" name="comment[_token]" value="{{ csrf_token('authenticate') }}">
+    <input type="text" name="comment[text]"/>
+    <input type="submit" value="Add Comment"/>
+</form>
+#}

@@ -1,0 +1,20 @@
+parameters:
+    my_user_provider.class: AppBundle\Security\Core\User\FOSUBUserProvider
+services:
+    app.form.registration:
+        class: AppBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: app_user_registration }
+    app.image_uploader:
+        class: AppBundle\FileUploader
+    my_user_provider:
+            class: "%my_user_provider.class%"
+            #this is the place where the properties are passed to the UserProvider - see config.yml
+            arguments: ["@fos_user.user_manager",{facebook: facebook_id, google: google_id, twitter: twitter_id, vkontakte: vkontakte_id, odnoklassniki: odnoklassniki_id, instagram: instagram_id, flickr: flickr_id, tumblr: tumblr_id, foursquare : foursquare_id, wordpress : wordpress_id, yahoo: yahoo_id, reddit: reddit_id, youtube: youtube_id, imgur: imgur_id, imgur2: imgur2_id, pinterest: pinterest_id}, "@doctrine.orm.entity_manager", "@security.token_storage", '%kernel.root_dir%']
+    mail_helper:
+            class:     AppBundle\MailHelper
+            arguments: ['@mailer']
+    twig_functions:
+            class:     AppBundle\Twig\Extension\FunctionsExtension            
+            tags:
+            - { name: twig.extension}

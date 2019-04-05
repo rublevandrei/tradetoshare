@@ -1,0 +1,31 @@
+services:
+     admin.user:
+         class: AppBundle\Admin\UserAdmin
+         arguments: [~, AppBundle\Entity\User, ~]
+         tags:
+              - { name: sonata.admin, manager_type: orm, group: "Administration", icon: '<i class="fa fa-cogs"></i>', label: User }
+     admin.company:
+         class: AppBundle\Admin\CompanyAdmin
+         arguments: [~, AppBundle\Entity\Company, ~]
+         tags:
+              - { name: sonata.admin, manager_type: orm, group: "Administration", label: Company }
+     admin.tradeland:
+         class: AppBundle\Admin\TradelandAdmin
+         arguments: [~, AppBundle\Entity\Tradeland, ~]
+         tags:
+              - { name: sonata.admin, manager_type: orm, group: "Administration", label: Tradeland }
+     admin.article:
+         class: AppBundle\Admin\ArticleAdmin
+         arguments: [~, AppBundle\Entity\Article, ~]
+         tags:
+              - { name: sonata.admin, manager_type: orm, group: "Administration", label: Article }
+     admin.notification:
+         class: AppBundle\Admin\NotificationAdmin
+         arguments: [~, AppBundle\Entity\Notification, ~]
+         tags:
+              - { name: sonata.admin, manager_type: orm, group: "Administration", label: Notification }
+     admin.message:
+         class: AppBundle\Admin\MessageAdmin
+         arguments: [~, AppBundle\Entity\Message, ~]
+         tags:
+              - { name: sonata.admin, manager_type: orm, group: "Administration", label: Message }

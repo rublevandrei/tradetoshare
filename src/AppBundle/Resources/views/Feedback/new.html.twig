@@ -1,0 +1,17 @@
+{% extends "::layout.html.twig" %}
+{% block title %}Ad Width Us{% endblock %}
+
+{% block content %}
+    <div class="col-md-8">
+        <h2 class="section_title">
+            Want to advertise with us? Send us your request:
+        </h2>
+        <div class="add_company_container">
+            {{ form_start(form, {'attr': {'class': 'feedback_form'}}) }}
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+            <input type="submit"  value="submit">
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

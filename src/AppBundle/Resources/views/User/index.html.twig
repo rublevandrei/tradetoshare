@@ -1,0 +1,81 @@
+{% extends "::layout.html.twig" %}
+{% block title %}{{ app.user.name }}{% endblock %}
+
+{% block content %}
+
+    <div class="col-sm-8 ">
+        <div class="user_profile_about">
+            <div class="group_page profile_page">
+
+                <div class="group_banner"
+                     style="background-image:url( {{ asset('bundles/framework/images/img-4.png') }}">
+                    <div class="upload_photo">
+                        <i class="fa fa-camera" aria-hidden="true"></i>
+                        <span>Photo</span>
+                    </div>
+                </div>
+                <div class="group_description">
+                    <div class="profile-main-box company-box">
+                        <div class="profile_image">
+                            <div class="image">
+                                {% if(user.avatar != null) %}
+                                    <img src="{{ asset('bundles/framework/images/user/' ~ user.avatar) }}"
+                                         alt='profile img'>
+                                {% else %}
+                                    <img src="{{ asset('bundles/framework/images/no_avatar.png') }}" alt='profile img'>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="profile_info">
+                            <h4 class="heading">{{ user.name }}</h4>
+                            <ul>
+                                <li class="company"><a href="#">{{ user.organization }}</a></li>
+                                <li class="position"><a href="#">{{ user.position }}</a></li>
+                                <li class="location"><a href="#">{{ user.location }}</a></li>
+                                <li class="education"><a href="#">{{ user.educationYear }}</a></li>
+                                {#<li class="job"><a href="#">    {{ app.user.name }}</a></li>#}
+                            </ul>
+                        </div>
+                        <div class="profile_buttons">
+                            <ul>
+                                {% if(app.user != user) %}
+                                    <li>
+                                        <a class="join" href="#">
+                                            <span>Connect</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="members" href="#">
+                                            <span>Message</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                <li>
+                                    <a class="message" href="#">
+                                        <span>Connections ({{ count }})</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if(user.about != null) %}
+                <div class="info">
+                    <div class="profile-main-box company-box">
+                        <h3>About Me</h3>
+                        {{ user.about }}
+                    </div>
+                </div>
+            {% endif %}
+            {% if(user.summary != null) %}
+                <div class="job_history">
+                    <div class="profile-main-box company-box">
+                        <h3>Summary</h3>
+                        {{ user.summary }}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

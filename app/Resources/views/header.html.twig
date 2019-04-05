@@ -1,0 +1,167 @@
+<!-- header -->
+<div id="header">   
+    <div class="ts_masthead">
+        <div class="masthead_batton"><i class="fa fa-bars" aria-hidden="true"></i><div class="circle_num"><strong>2</strong></div></div>                
+    </div>
+    <div class="logo">
+        <a {% if app.user %}href="{{ path('post_index', {'user': app.user.id}) }}"{% else %}href="/"{% endif %}>
+            <img class="fool_logo" src="{{asset('bundles/framework/upload/logo.png')}}" alt="Trade My Share"/>
+            <img class="short_logo" src="{{asset('bundles/framework/upload/smal_logo.jpg')}}" alt="Trade My Share"/>
+        </a>
+    </div>
+    <div class="search_block">
+        <form action="" class="search_form">
+            <div class="form-item">                        
+                <label></label> 
+                <input type="text" class="mail mandatory" name="mail" value="" placeholder="Search to TradeToShare" />                
+            </div>
+            <div class="form-ection">    
+                <i class="fa fa-search" aria-hidden="true"></i>                                      
+                <input type="submit" class="submit" value="" />
+            </div>
+        </form>
+    </div>
+    {% if app.user %}
+    <nav>        
+        <div class="main_menu">
+            <ul>
+                <li class="first {% if app.request.attributes.get('_route') == 'post_index' %}active{% endif %}"><a href="{{ path('post_index', {'user': app.user.id}) }}">Home</a></li>
+                <li class="{% if app.request.attributes.get('_route') == 'network_index' %}active{% endif %}"><a href="{{ path('network_index') }}">Network</a></li>
+                <!--<li class="{% if app.request.attributes.get('_route') == 'post_index' %}active{% endif %}"><a href="{{ path('tradeland_new') }}">Create a Tradeland</a></li>                                                   
+                <li class="{% if app.request.attributes.get('_route') == 'post_index' %}active{% endif %}"><a href="{{ path('company_index') }}">Companies</a></li>
+                <li class="last {% if app.request.attributes.get('_route') == 'post_index' %}active{% endif %}"><a href="{{ path('article_index') }}">Articles</a></li>-->
+                <!--li class="last {% if app.request.attributes.get('_route') == 'post_index' %}active{% endif %}"><a href="{{ path('feedback_new') }}">Contact us</a></li-->
+            </ul>
+        </div>            
+    </nav>
+    {% endif %}
+    <div class="header_right">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <!-- Notifications -->
+            {{ render(controller('AppBundle:Notification:index')) }}
+        <!-- End Notifications -->
+
+        <!-- Messages-->
+        <div class="user_ico user_messages">
+            <i class="fa fa-envelope" aria-hidden="true"></i><div class="circle_num"><strong>2</strong></div>
+            <div class="header_pop_up">
+                <div class="header_pop_up_wrapper">
+                    <div class="header_pop_up_wrapper_top">
+                        <p><strong>Messages</strong></p>
+                    </div>
+                    <div class="header_pop_up_wrapper_body">
+                        <ul>
+                            <li  class="new">
+                                <span class="img"><a href="#"><img src="{{asset('bundles/framework/upload/user_account_photo.jpg')}}" alt=""/></a></span>
+                                <div class="text_wrapper">
+                                    <a href="#" class="user_name">Idrees Khan</a>
+                                    <p class="text">
+                                        Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from
+                                    </p>
+                                    <span class="time">05:21 PM 24.06.2017</span>
+                                    <a href="#" class="small_batton">Delete</a>
+                                    <a href="#" class="small_batton">View</a>
+                                </div>
+                            </li>
+                            <li  class="new">
+                                <span class="img"><a href="#"><img src="{{asset('bundles/framework/upload/tom_kruse.png')}}" alt=""/></a></span>
+                                <div class="text_wrapper">
+                                    <a href="#" class="user_name">Idrees Khan</a>
+                                    <p class="text">
+                                        Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from
+                                    </p>
+                                    <span class="time">05:21 PM 24.06.2017</span>
+                                    <a href="#" class="small_batton">Delete</a>
+                                    <a href="#" class="small_batton">View</a>
+                                </div>
+                            </li>
+                            <li  class="">
+                                <span class="img"><a href="#"><img src="{{asset('bundles/framework/upload/tom_kruse.png')}}" alt=""/></a></span>
+                                <div class="text_wrapper">
+                                    <a href="#" class="user_name">Idrees Khan</a>
+                                    <p class="text">
+                                        Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from
+                                    </p>
+                                    <span class="time">05:21 PM 24.06.2017</span>
+                                    <a href="#" class="small_batton">Delete</a>
+                                    <a href="#" class="small_batton">View</a>
+                                </div>
+                            </li>
+                            <li  class="">
+                                <span class="img"><a href="#"><img src="{{asset('bundles/framework/upload/user_account_photo.jpg')}}" alt=""/></a></span>
+                                <div class="text_wrapper">
+                                    <a href="#" class="user_name">Idrees Khan</a>
+                                    <p class="text">
+                                        Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from
+                                    </p>
+                                    <span class="time">05:21 PM 24.06.2017</span>
+                                    <a href="#" class="small_batton">Delete</a>
+                                    <a href="#" class="small_batton">View</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header_pop_up_wrapper_bottom">
+                        <a href="{{ path('message_index') }}">See All Messages</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Messages -->
+                    
+        <div class="user_account">
+            <div class="more_actions">
+                <div class="us_pict">
+                    {% if(app.user.avatar != null) %}
+                        <span class="user_account_img"><img src="{{ asset('bundles/framework/images/user/' ~ app.user.avatar) }}" alt=""/></span>
+                    {% else %}
+                        <span class="user_account_img"><img src="{{ asset('bundles/framework/images/no_avatar.png') }}" alt=""/></span>
+                    {% endif %}
+                    <span class="user_account_name">{{ app.user.name }}</span>
+                </div> <!--  link on user profile -->
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                
+                <div class="more_actions_wrapper">
+                    <ul class="">
+                        <li class=""><a href="{{ path('user_show', {'user': app.user.id}) }}">My profile</a></li>
+                        <li class=""><span class="line"></span></li>
+                        <li class=""><a href="{{ path('user_edit') }}">Edit</a></li>
+                        <li class=""><a href="{{ path('tradeland_invite') }}">Invite Friends</a></li>
+                        <li class=""><a href="{{ path('user_network') }}">My Network</a></li>
+                        <li class=""><span class="line"></span></li>
+                        <li class=""><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="user-status">
+                {% if app.user.status == 'away' %}
+                    {% set statusClass = 'fa-clock-o' %}
+                {% elseif app.user.status == 'busy' %}
+                    {% set statusClass = 'fa-minus-circle' %}
+                {% elseif app.user.status == 'invisible' %}
+                    {% set statusClass = 'fa-circle-o' %}
+                {% elseif app.user.status == 'online' %}
+                    {% set statusClass = 'fa-check-circle' %}
+                {% endif %}
+                <div class="user-status_current"><i class="fa {{statusClass}}" aria-hidden="true"></i></div>
+                <div class="user-statuses">
+                    <ul class="">
+                        <li class="item_away {% if( app.user.status == 'away') %}active{% endif %}"><i class="fa fa-clock-o" aria-hidden="true"></i><span data-status="away"> - Away</span></li>
+                        <li class="item_online {% if( app.user.status == 'online') %}active{% endif %}"><i class="fa fa-check-circle" aria-hidden="true"></i><span data-status="online"> - Online</span></li>
+                        <li class="item_invisible {% if( app.user.status == 'invisible') %}active{% endif %}"><i class="fa fa-circle-o" aria-hidden="true"></i><span data-status="invisible"> - Invisible</span></li>
+                        <li class="item_busy {% if( app.user.status == 'busy') %}active{% endif %}"><i class="fa fa-minus-circle" aria-hidden="true"></i><span data-status="busy"> - Busy</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        {% else %}
+            <div class="user_account">
+                <div class="more_actions">
+                    <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+                             
+</div><!-- end header -->

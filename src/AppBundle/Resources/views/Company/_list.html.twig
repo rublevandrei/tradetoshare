@@ -1,0 +1,94 @@
+{% for company in companies %}
+    <div class="profile-main-box company-box">
+        <div class="profile_image">
+            <div class="image">
+                {% if(company[0].logo != null) %}
+                    <img src="{{ asset('bundles/framework/images/company/' ~ company[0].logo) }}"
+                         alt="{{ company[0].name }}"/>
+                {% else %}
+                    <img src="{{ asset('bundles/framework/images/no-logo.png') }}"
+                         alt="{{ company[0].name }}"/>
+                {% endif %}
+            </div>
+
+        </div>
+        <div class="profile_info">
+            <h2 class="heading">{{ company[0].name }}</h2>
+            {#{% if(company[0].link != null) %}#}
+            {#<strong>Website:</strong>#}
+            {#<p>{{ company[0].link }}</p>#}
+            {#{% endif %}#}
+            {% if(company[0].industry != null) %}
+                <strong>Industry:</strong>
+                <p>{{ company[0].industry }}</p>
+            {% endif %}
+            {#{% if(company[0].yearFounded != null) %}#}
+            {#<strong>Year Founded:</strong>#}
+            {#<p>{{ company[0].yearFounded }}</p>#}
+            {#{% endif %}#}
+
+            {% if(company[0].location != null) %}
+                <strong>Location:</strong>
+                <p>{{ company[0].location }}</p>
+                <p>{{ company[0].location2 }}</p>
+                <p>{{ company[0].location3 }}</p>
+                <p>{{ company[0].location4 }}</p>
+                <p>{{ company[0].location5 }}</p>
+                <p>{{ company[0].description }}</p>
+            {% endif %}
+            {% if(company[0].description != null) %}
+                <strong>Short Description:</strong>
+                <p>{{ company[0].description }}</p>
+            {% endif %}
+        </div>
+        <div class="profile_buttons">
+
+            {% if company[0] in app.user.voteCompany %}
+                <a href="#" class="vote_btn last_vote" data-company="{{ company[0].id }}">
+                    <span class="vote_name">Voted</span>
+                    <span class="vote_count numbers">{{ company.company_votes }}</span>
+                </a>
+            {% else %}
+                <a href="#" class="vote_btn first_vote" data-company="{{ company[0].id }}">
+                    <span class="vote_name">Vote</span>
+                    <span class="vote_count numbers">{{ company.company_votes }}</span>
+                </a>
+            {% endif %}
+            <ul>
+                {#<li>#}
+                {#<a class="trade" href="#">#}
+                {#<span>Trade</span>#}
+                {#</a>#}
+                {#</li>#}
+                {#<li>#}
+                    {#{% if company[0] in app.user.voteCompany %}#}
+                        {#<a href="#" class="vote_btn last_vote" data-company="{{ company[0].id }}">#}
+                            {#<span class="vote_name">Voted</span>#}
+                            {#<span class="vote_count numbers">{{ company.company_votes }}</span>#}
+                        {#</a>#}
+                    {#{% else %}#}
+                        {#<a href="#" class="vote_btn first_vote" data-company="{{ company[0].id }}">#}
+                            {#<span class="vote_name">Vote</span>#}
+                            {#<span class="vote_count numbers">{{ company.company_votes }}</span>#}
+                        {#</a>#}
+                    {#{% endif %}#}
+                {#</li>#}
+                <li><a class="share" href="#"><span>Share</span></a></li>
+                {#<li>#}
+                {#<a class="message" href="#">#}
+                {#<span>Message</span>#}
+                {#</a>#}
+                {#</li>#}
+                {% if app.user == company[0].user %}
+                    <li>
+                        <a class="share" href="{{ path('company_edit', {'id': company[0].id}) }}">
+                            <span>Edit</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+{% else %}
+    No companies found
+{% endfor %}

@@ -1,0 +1,61 @@
+{% extends "::layout.html.twig" %}
+
+{% block content %}
+    <div class="row register_page">
+        <div class="col-sm-12">
+            <h1 class="register_title text-center">Login</h1>
+        </div>
+        {% if error is defined and error %}
+        <span>{{ error }}</span>
+        {% endif %}
+
+        <div class="col-sm-12 login_form">
+            <div class="text-center">
+                {#<a href="{{ hwi_oauth_login_url('facebook') }}"><img src="{{ asset('bundles/framework/img/fb.png') }}" alt="Facebook"></a>#}
+                {#<a href="{{ hwi_oauth_login_url('google') }}"><img src="{{ asset('bundles/framework/img/gp.png') }}" alt="Google+"></a>#}
+                {#<a href="{{ hwi_oauth_login_url('twitter') }}"><img src="{{ asset('bundles/framework/img/tw.png') }}" alt="Google+"></a>#}
+
+                <ul class="social-media">
+                    <li><a href="{{ hwi_oauth_login_url('facebook') }}"><i class="fa fa-facebook-official fa-2x" title="facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ hwi_oauth_login_url('google') }}"><i class="fa fa-google-plus-official fa-2x" title="google" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ hwi_oauth_login_url('twitter') }}"><i class="fa fa-twitter fa-2x" title="twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ hwi_oauth_login_url('vkontakte') }}"><i class="fa fa-vk fa-2x" title="vkontakte" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ hwi_oauth_login_url('tumblr') }}"><i class="fa fa-tumblr fa-2x" title="tumblr" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ hwi_oauth_login_url('instagram') }}"><i class="fa fa-instagram fa-2x" title="instagram" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ hwi_oauth_login_url('flickr') }}"><i class="fa fa-flickr fa-2x" title="flickr" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ hwi_oauth_login_url('foursquare') }}"><i class="fa fa-foursquare fa-2x" title="foursquare" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ hwi_oauth_login_url('yahoo') }}"><i class="fa fa-yahoo fa-2x" title="yahoo" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ hwi_oauth_login_url('imgur2') }}"><i class="fa fa-info fa-2x" title="imgur" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ hwi_oauth_login_url('pinterest') }}"><i class="fa fa-pinterest fa-2x" title="pinterest" aria-hidden="true"></i></a></li>
+                    <li><a href="{{ hwi_oauth_login_url('odnoklassniki') }}"><i class="fa fa-odnoklassniki fa-2x" title="odnoklassniki" aria-hidden="true"></i></a></li>
+                    {#<li><a href="{{ hwi_oauth_login_url('wordpress') }}"><i class="fa fa-wordpress fa-2x" title="wordpress" aria-hidden="true"></i></a></li>#}
+                </ul>
+            </div>
+            <form action="{{ path('fos_user_security_check') }}" method="post">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+                <input type="text" id="username" name="_username" value="" required="required" placeholder="Email" autofocus="">
+                <input type="password" id="password" name="_password" required="required" placeholder="Password">
+
+                <div class="text-center">
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+
+            <div class="additional_buttons">
+                <ul>
+                    <li>
+                        <a href="#">Join</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('fos_user_resetting_request') }}">Lost Password</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block stylesheet %}
+    {{ parent() }}
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+ {% block aside %} {% endblock %}

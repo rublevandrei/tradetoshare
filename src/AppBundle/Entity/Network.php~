@@ -1,0 +1,173 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+//use Doctrine\Common\Collections\ArrayCollection;
+/**
+ * Network
+ *
+ * @ORM\Table(name="network")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\NetworkRepository")
+ */
+class Network
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="connections")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
+     */
+    private $user;
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="fromConnections")
+     * @ORM\JoinColumn(name="from_user_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
+     */
+    private $fromUser;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $status;
+
+//    /**
+//     *
+//     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Notification", mappedBy="connect", cascade={"persist"})
+//     */
+//    private $notifications;
+//
+//    public function __construct()
+//    {
+//        $this->notifications = new ArrayCollection();
+//    }
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return Network
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Network
+     */
+    public function setUser(\AppBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set fromUser
+     *
+     * @param \AppBundle\Entity\User $fromUser
+     *
+     * @return Network
+     */
+    public function setFromUser(\AppBundle\Entity\User $fromUser)
+    {
+        $this->fromUser = $fromUser;
+
+        return $this;
+    }
+
+    /**
+     * Get fromUser
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getFromUser()
+    {
+        return $this->fromUser;
+    }
+
+//    /**
+//     * Add notification
+//     *
+//     * @param \AppBundle\Entity\Notification $notification
+//     *
+//     * @return Network
+//     */
+//    public function addNotification(\AppBundle\Entity\Notification $notification)
+//    {
+//        $this->notifications[] = $notification;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Remove notification
+//     *
+//     * @param \AppBundle\Entity\Notification $notification
+//     */
+//    public function removeNotification(\AppBundle\Entity\Notification $notification)
+//    {
+//        $this->notifications->removeElement($notification);
+//    }
+//
+//    /**
+//     * Get notifications
+//     *
+//     * @return \Doctrine\Common\Collections\Collection
+//     */
+//    public function getNotifications()
+//    {
+//        return $this->notifications;
+//    }
+}

@@ -1,0 +1,52 @@
+{% extends "::layout.html.twig" %}
+{% block title %}{{ user.name }}{% endblock %}
+
+{% block content %}
+    <div class="row register_page">
+        <div class="col-sm-8">
+            <h1 class="section_title">Edit Your Profile</h1>
+            {#<a href="{{ hwi_oauth_login_url('google_contacts') }}"><img src="{{ asset('bundles/framework/img/gp.png') }}" alt="Google+"></a>#}
+            <ul class="edit_profile">
+                <li>
+                    <button class="btn btn-primary drop_down_button" type="button" data-toggle="collapse"
+                            data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                        Personal details
+                        <span class="caret"></span>
+                    </button>
+                    <div class="collapse" id="collapseExample1">
+                        <div class="well">
+                            {% include 'AppBundle:User:_form.html.twig' %}
+                        </div>
+                    </div>
+                </li>
+                {#<li>#}
+                    {#<button class="btn btn-primary drop_down_button" type="button" data-toggle="collapse"#}
+                            {#data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">#}
+                        {#Company profile#}
+                        {#<span class="caret"></span>#}
+                    {#</button>#}
+                    {#<div class="collapse" id="collapseExample2">#}
+                        {#<div class="well">#}
+                            {#...2#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</li>#}
+                <li>
+                    <button class="btn btn-primary drop_down_button" type="button" data-toggle="collapse"
+                            data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+                        Change your password
+                        <span class="caret"></span>
+                    </button>
+                    <div class="collapse" id="collapseExample3">
+                        <div class="well">
+                            {{ render(controller('AppBundle:User:password')) }}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+{% endblock %}

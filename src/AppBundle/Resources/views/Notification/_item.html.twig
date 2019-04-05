@@ -1,0 +1,31 @@
+<div class="person_item clearfix">
+    <div class="image matchHeight">
+        {% if(user.avatar != null) %}
+            <div class="image"
+                 style="background-image:url({{ asset('bundles/framework/images/user/' ~ user.avatar) }})"></div>
+        {% else %}
+            <div class="image"
+                 style="background-image:url({{ asset('bundles/framework/images/no_avatar.png') }})"></div>
+        {% endif %}
+    </div>
+    <div class="content matchHeight">
+        <p>
+            {% if(status == 'pending') %}
+                <a href="{{ path('user_show', {'user': user.id}) }}">{{ user.name }}</a> wants to connect you on TTS
+            {% elseif(status == 'accepted') %}
+                You and <a href="{{ path('user_show', {'user': user.id}) }}">{{user.name }}</a> are now connected
+            {% elseif(status == 'acceptedFrom') %}
+                <a href="{{ path('user_show', {'user': user.id}) }}">{{ user.name }}</a> accept your request to connect
+            {% endif %}
+        </p>
+        <div class="button_froup">
+            <a href="{{ path('user_show', {'user': user.id}) }}">View</a>
+            {% if(id is defined) %}
+                <a href="{{ path('network_status', {'connection': id, 'status': 'accepted'}) }}">Accept</a>
+                <a href="{{ path('network_status', {'connection': id, 'status': 'ignored'}) }}">Ignore</a>
+            {% else %}
+                <a href="#">Message</a>
+            {% endif %}
+        </div>
+    </div>
+</div>

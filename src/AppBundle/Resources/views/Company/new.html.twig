@@ -1,0 +1,114 @@
+{% extends "::layout.html.twig" %}
+{% block title %}Company{% endblock %}
+
+{% block content %}
+
+    <div class="col-md-8">
+        <h2 class="section_title">
+            {% if company.id != null %}
+                Edit Company
+            {% else %}
+                Add Company
+            {% endif %}
+        </h2>
+        <div class="add_company_container">
+            <div> {{ render(controller('AppBundle:Default:upload')) }}</div>
+            {{ form_start(form, {'attr': {'class': 'company_form'}}) }}
+            {{ form_errors(form) }}
+            {% form_theme form 'form/company_fields.html.twig' %}
+            {{ form_row(form.logo) }}
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="image_container"
+                         {% if company.logo != null %}style="background-image:url({{ asset('bundles/framework/images/company/'~ company.logo) }})" {% endif %}>
+
+                        <div class="add_image">
+                            <span><i class="fa fa-picture-o" aria-hidden="true"></i> Upload LOGO Image</span>
+
+                            {#<input type="file" name="photo" multiple accept="image/*,image/jpeg,image/jpg,image/png">#}
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.link) }}
+                    {{ form_row(form.yearFounded) }}
+                    <div class="location_block">
+                        {{ form_row(form.location) }}
+                        {{ form_row(form.location2) }}
+                        {{ form_row(form.location3) }}
+                        {{ form_row(form.location4) }}
+                        {{ form_row(form.location5) }}
+                    </div>
+                    <span class="additional_info">(Add up to 5 different locations)</span>
+                    <button class="location_btn">Add Another Location</button>
+
+                </div>
+                <div class="col-sm-12 add_company_container_additional">
+                    {{ form_row(form.size) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.industry) }}
+                    <div class="industry_relative">
+                        <div class="industry_block"></div>
+                    </div>
+                    {{ form_row(form.description) }}
+                    <span class="additional_info">(<span
+                                class="desc_symbols">0</span> out of 2,000 characters)</span>
+
+                    {% if company.id == null %}
+                        <label for="checkbox" class="checkbox_label">
+                            {{ form_row(form.termsAccepted) }}
+                            I verify this company is offical and real</label>
+                    {% endif %}
+                    <div class="text-center buttons_group">
+                        {% if company.id != null %}
+                            <button class="edit_profile">EDIT</button>
+                            <button class="edit_profile delete_company">DELETE</button>
+                        {% else %}
+                            <input type="submit" name="" value="submit">
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
+
+            {% if company.id != null %}
+                {{ form_start(delete_form, {'attr': {'class': 'delete_company_form'}}) }}
+                {{ form_end(delete_form) }}
+            {% endif %}
+        </div>
+
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDSJtv1jOLb_yL3VbokEymUcR5PyCnZE8I"></script>
+
+    <script>
+        $(document).ready(function () {
+            var autocomplete;
+
+            function initialize() {
+                var input = document.getElementsByClassName('location')
+                for (i = 0; i < input.length; i++) {
+                    autocomplete = new google.maps.places.Autocomplete(input[i], {types: ['geocode']});
+                }
+
+                google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                    if ($('.mentor_search').length) {
+                        $('.mentor_search').submit();
+                    }
+                });
+            }
+
+            if ($('.location').length) {
+                initialize();
+            }
+        });
+    </script>
+{% endblock %}

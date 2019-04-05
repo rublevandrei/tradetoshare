@@ -1,0 +1,59 @@
+<div class="add_post_wrapper">
+    {{ form_start(form) }}
+    <div class="add_post_content">
+    <div class="form-item">
+        <label></label>
+        {% if(app.user.avatar != null) %}
+            <span class="user_account_img"><img src="{{ asset('bundles/framework/images/user/' ~ app.user.avatar) }}" alt=""></span>
+        {% else %}
+            <span class="user_account_img"><img src="{{ asset('bundles/framework/images/no_avatar.png') }}" alt=""></span>
+        {% endif %}
+        {{ form_row(form.text, {'cols': '', 'rows': ''}) }}
+    </div>
+<div class="form_bottom">
+    <div class="also_post">
+        <p>Also post to:</p>
+        <ul>
+            {% for provider in [
+                'facebook', 'google', 'twitter', 'vkontakte', 'tumblr', 'instagram', 'flickr', 'foursquare', 'pinterest', 'imgur'
+            ] %}
+                <li class="{{ provider }}" data-provider="{{ provider }}" title="{{ provider }}">
+                    <i class="fa fa-square-o" aria-hidden="true"></i>
+                    <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                    <span></span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div> <!--  also_post -->
+    <div class="media_selector">
+        <a class="ms_item_photo" tabindex="0" data-title="Photo" aria-label="Photo" role="link"><i class="fa fa-camera" aria-hidden="true"></i><span class="blind_label">Photo</span></a>
+        <a class="ms_item_video" tabindex="0" data-title="Video" aria-label="Video" role="link"><i class="fa fa-video-camera" aria-hidden="true"></i><span class="blind_label">Video</span></a>
+        <!--<a class="ms_item_gift" tabindex="0" data-title="Gift" aria-label="Gift" role="link"><i class="fa fa-gift" aria-hidden="true"></i><span class="blind_label">Gift</span></a>-->
+        <a class="ms_item_smile" tabindex="0" data-title="Smile" aria-label="Smile" role="link"><i class="fa fa-smile-o" aria-hidden="true"></i><span class="blind_label">Smile</span></a>
+        <div class="ms_items_more_wrap" style="visibility:hidden">
+            <div class="ms_item_more">
+                <span>More</span><i class="fa fa-angle-down" aria-hidden="true"></i>
+            </div>
+            <div class="more_actions">
+                <a class="ms_item_gif" tabindex="0" data-title="Gif" aria-label="Gif" role="link"><i class="fa fa-puzzle-piece" aria-hidden="true"></i><span class="blind_label">Gif</span></a>
+                <a class="ms_item_audio" tabindex="0" data-title="Audio" aria-label="Audio" role="link"><i class="fa fa-music" aria-hidden="true"></i><span class="blind_label">Audio</span></a>
+                <a class="ms_item_doc" tabindex="0" data-title="Document" aria-label="Document" role="link"><i class="fa fa-file-text-o" aria-hidden="true"></i><span class="blind_label">Document</span></a>
+                <a class="ms_item_map" tabindex="0" data-title="Map" aria-label="Map" role="link"><i class="fa fa-map-marker" aria-hidden="true"></i><span class="blind_label">Map</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="form-ection">
+    <input type="submit" class="submit" value="Post" />
+    <span class="schedule_batton batton">Schedule</span>
+</div>
+    {{ form_end(form) }}
+
+    <div style="display: none" class="image_container">
+        <div class="dropzone">
+        </div>
+    </div>
+
+
+</div>

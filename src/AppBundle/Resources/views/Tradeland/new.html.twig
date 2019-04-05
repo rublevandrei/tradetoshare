@@ -1,0 +1,42 @@
+{% extends "::layout.html.twig" %}
+{% block title %}Create Tradeland{% endblock %}
+{% block content %}
+    <div class="col-sm-8 create_group">
+        <h1 class="section_title">Create Tradeland</h1>
+        {{ form_start(form) }}
+        {% form_theme form 'form/user_fields.html.twig' %}
+        {{ form_row(form.name) }}
+        {{ form_row(form.summary) }}
+        {{ form_row(form.description) }}
+
+        {#<div class="line checkbox_btns">#}
+            {#{{ form_row(form.termsAccepted) }}#}
+            {#{{ form_row(form.myNetwork) }}#}
+            {#{{ form_row(form.importFriends) }}#}
+            {#{{ form_row(form.inviteFriend) }}#}
+        {#</div>#}
+
+        <div class="line radio_btns">
+            {#{{ form_row(form.type) }}#}
+            {#<label>#}
+            {#<input name="public_privacy" type="radio" value="public">#}
+            {#Public#}
+            {#</label>#}
+            {#<label>#}
+            {#<input name="public_privacy" type="radio" value="privacy"> Privacy#}
+            {#</label>#}
+        </div>
+        <div class="line radio_btns">
+            <input type="submit" value="Create tradelend">
+            <button type="reset" class="reset">Cancel</button>
+        </div>
+        {{ form_end(form) }}
+
+        {#{{ form_start(form) }}#}
+        {#{% form_theme form 'form/fields.html.twig' %}#}
+        {#{{ form_widget(form) }}#}
+        {#<input type="submit" value="Create"/>#}
+        {#{{ form_end(form) }}#}
+    </div>
+
+{% endblock %}
